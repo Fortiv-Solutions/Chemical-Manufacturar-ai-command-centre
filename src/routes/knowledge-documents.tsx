@@ -123,7 +123,7 @@ function KnowledgeDocumentsWorkspacePage() {
               { key: "name", header: "Document Title", render: (r) => <span className="font-bold text-[#1E293B]">{r.name}</span> },
               { key: "type", header: "Category / Type", render: (r) => <Pill tone="info">{r.type}</Pill> },
               { key: "department", header: "Department", render: (r) => <span className="text-[#64748B] font-semibold">{r.department}</span> },
-              { key: "date", header: "Last Updated", render: (r) => <span className="text-[#64748B] num">{r.date}</span> },
+              { key: "updated", header: "Last Updated", render: (r) => <span className="text-[#64748B] num">{r.updated || r.effectiveDate || r.lastUpdated || "2 hours ago"}</span> },
             ]}
             searchKeys={["name", "type", "department"]}
             placeholder="Search MSDS, SOPs, contracts, batch records, invoices..."

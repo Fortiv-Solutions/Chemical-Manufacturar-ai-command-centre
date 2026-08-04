@@ -33,6 +33,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Pill, StatusDot } from "@/components/cc/primitives";
 import { AGENTS, AUTOMATIONS, DEPT_PROFILES } from "@/lib/command-center-data";
+import { AIChatDrawer } from "@/components/cc/AIChatDrawer";
 import {
   CommandDialog,
   CommandEmpty,
@@ -81,7 +82,6 @@ const NAV: Array<{ to: string; label: string; icon: typeof Bot; description: str
   },
 ];
 
-
 function SidebarContent({
   onNavigate,
   collapsed,
@@ -96,25 +96,37 @@ function SidebarContent({
   return (
     <div className="flex h-full flex-col bg-[#F4F7FA] border-r border-[#E2E8F0]">
       {/* Brand Header */}
-      <div className="flex items-center justify-between px-4 py-4.5 border-b border-[#E2E8F0]">
-        <div className="flex items-center gap-3 min-w-0">
-          <div className="grid size-9 shrink-0 place-items-center rounded-xl bg-[#0F4C81] text-[#FFFFFF] shadow-sm">
-            <Cpu className="size-5" />
-          </div>
-          {!collapsed && (
-            <div className="leading-tight truncate">
-              <p className="text-sm font-extrabold tracking-tight text-[#1E293B]">ChemCorp AI OS</p>
-              <p className="text-[11px] font-semibold text-[#147A7E]">Industrial Intelligence</p>
+      <div className={cn("flex items-center border-b border-[#E2E8F0] py-4", collapsed ? "justify-center px-2" : "justify-between px-4")}>
+        {!collapsed ? (
+          <>
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="grid size-9 shrink-0 place-items-center rounded-xl bg-[#0F4C81] text-[#FFFFFF]">
+                <Cpu className="size-5" />
+              </div>
+              <div className="leading-tight truncate">
+                <p className="text-sm font-extrabold tracking-tight text-[#1E293B]">ChemCorp AI OS</p>
+                <p className="text-[11px] font-semibold text-[#147A7E]">Industrial Intelligence</p>
+              </div>
             </div>
-          )}
-        </div>
-        {onToggleCollapse && (
+            {onToggleCollapse && (
+              <button
+                onClick={onToggleCollapse}
+                aria-label="Collapse Sidebar"
+                className="hidden lg:flex size-7 items-center justify-center rounded-lg border border-[#E2E8F0] bg-transparent text-[#64748B] hover:bg-[#E2E8F0] hover:text-[#1E293B] transition-colors"
+              >
+                <ChevronLeft className="size-4" />
+              </button>
+            )}
+          </>
+        ) : (
           <button
             onClick={onToggleCollapse}
-            aria-label={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
-            className="hidden lg:flex size-7 items-center justify-center rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B] hover:bg-[#F0F4F8] hover:text-[#1E293B] transition-colors"
+            aria-label="Expand Sidebar"
+            className="grid size-9 place-items-center rounded-xl bg-[#0F4C81] text-[#FFFFFF] hover:bg-[#0A3A63] transition-colors group relative"
+            title="Expand Sidebar"
           >
-            {collapsed ? <ChevronRight className="size-4" /> : <ChevronLeft className="size-4" />}
+            <Cpu className="size-5 group-hover:hidden" />
+            <ChevronRight className="size-5 hidden group-hover:block" />
           </button>
         )}
       </div>
@@ -137,11 +149,14 @@ function SidebarContent({
                   onClick={onNavigate}
                   title={collapsed ? `${item.label} — ${item.description}` : undefined}
                   className={cn(
-                    "group relative flex items-center gap-3.5 rounded-xl px-3 py-2.5 text-[13px] font-bold transition-all duration-150",
-                    active
-                      ? "bg-[#EBF1F8] text-[#0F4C81] border-l-[3px] border-l-[#0F4C81] shadow-sm"
-                      : "text-[#475569] hover:bg-[#F0F4F8] hover:text-[#0F4C81]",
-                    collapsed && "justify-center px-0 py-3",
+                    "group relative flex items-center transition-all duration-150",
+                    collapsed
+                      ? active
+                        ? "size-10 justify-center rounded-xl bg-[#EBF1F8] text-[#0F4C81] mx-auto"
+                        : "size-10 justify-center rounded-xl text-[#64748B] hover:bg-[#F0F4F8] hover:text-[#0F4C81] mx-auto"
+                      : active
+                        ? "gap-3.5 rounded-xl px-3 py-2.5 text-[13px] font-bold bg-[#EBF1F8] text-[#0F4C81] border-l-[3px] border-l-[#0F4C81]"
+                        : "gap-3.5 rounded-xl px-3 py-2.5 text-[13px] font-bold text-[#475569] hover:bg-[#F0F4F8] hover:text-[#0F4C81]",
                   )}
                 >
                   <item.icon
@@ -170,10 +185,9 @@ function SidebarContent({
         </ul>
       </nav>
 
-
       {/* System Status Footer */}
       {!collapsed && (
-        <div className="mx-3 mb-4 rounded-[14px] border border-[#E2E8F0] bg-[#FFFFFF] p-3.5 shadow-sm">
+        <div className="mx-3 mb-4 rounded-[14px] border border-[#E2E8F0] bg-[#FFFFFF] p-3.5">
           <div className="flex items-center gap-2 text-xs font-bold text-[#1E293B]">
             <StatusDot tone="success" /> Industrial Cluster Healthy
           </div>
@@ -229,6 +243,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [aiChatOpen, setAiChatOpen] = useState(false);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -237,13 +252,20 @@ export function AppShell({ children }: { children: ReactNode }) {
         setSearchOpen((v) => !v);
       }
     };
+    const onOpenAiChat = () => setAiChatOpen(true);
+
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("open-ai-chat", onOpenAiChat);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("open-ai-chat", onOpenAiChat);
+    };
   }, []);
 
   return (
     <div className="min-h-screen w-full bg-[#F5F7FA] text-[#1E293B]">
       <GlobalSearch open={searchOpen} setOpen={setSearchOpen} />
+      <AIChatDrawer open={aiChatOpen} onClose={() => setAiChatOpen(false)} />
 
       {/* Desktop sidebar */}
       <aside
@@ -282,7 +304,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Content wrapper with dynamic padding */}
       <div className={cn("transition-all duration-300", collapsed ? "lg:pl-20" : "lg:pl-[280px]")}>
         {/* Premium Top Navigation Bar */}
-        <header className="sticky top-0 z-20 border-b border-[#E2E8F0] bg-[#FFFFFF] shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+        <header className="sticky top-0 z-20 border-b border-[#E2E8F0] bg-[#FFFFFF]">
           <div className="flex h-16 items-center gap-3 px-4 md:px-6">
             <button
               aria-label="Open navigation"
@@ -295,7 +317,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             {/* Command Palette Trigger */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="group flex h-9.5 min-w-0 flex-1 items-center gap-2.5 rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-4 text-left text-[13px] text-[#64748B] transition-all hover:border-[#0F4C81] hover:bg-[#FFFFFF] hover:shadow-xs md:max-w-md"
+              className="group flex h-9.5 min-w-0 flex-1 items-center gap-2.5 rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-4 text-left text-[13px] text-[#64748B] transition-all hover:border-[#0F4C81] hover:bg-[#FFFFFF] md:max-w-md"
             >
               <Search className="size-4 text-[#0F4C81] group-hover:scale-105 transition-transform" />
               <span className="truncate">Search employees, SOPs, invoices, data...</span>
@@ -306,12 +328,12 @@ export function AppShell({ children }: { children: ReactNode }) {
 
             {/* Right Top Actions */}
             <div className="ml-auto flex items-center gap-3">
-              <Link
-                to="/brain"
-                className="hidden items-center gap-2 rounded-xl bg-[#0F4C81] px-4 py-2 text-[13px] font-bold text-[#FFFFFF] shadow-sm transition-all hover:bg-[#0A3A63] hover:shadow-md sm:flex"
+              <button
+                onClick={() => setAiChatOpen(true)}
+                className="hidden items-center gap-2 rounded-xl bg-[#0F4C81] px-4 py-2 text-[13px] font-bold text-[#FFFFFF] transition-all hover:bg-[#0A3A63] sm:flex cursor-pointer"
               >
                 <Sparkles className="size-4 text-[#FFFFFF]" /> Ask Company AI
-              </Link>
+              </button>
               <Pill tone="success" className="hidden xl:inline-flex">
                 <StatusDot tone="success" /> {AUTOMATIONS.filter(a => a.status === "Live").length} automations live
               </Pill>
@@ -327,7 +349,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               </button>
 
               {/* User Profile Card */}
-              <div className="flex items-center gap-2.5 rounded-full border border-[#E2E8F0] bg-[#FFFFFF] py-1 pl-1 pr-3.5 shadow-xs">
+              <div className="flex items-center gap-2.5 rounded-full border border-[#E2E8F0] bg-[#FFFFFF] py-1 pl-1 pr-3.5">
                 <span className="grid size-7.5 place-items-center rounded-full bg-[#0F4C81] text-xs font-bold text-[#FFFFFF]">
                   RV
                 </span>

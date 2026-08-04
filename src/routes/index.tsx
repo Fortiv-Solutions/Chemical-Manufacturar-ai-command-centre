@@ -159,12 +159,6 @@ function Dashboard() {
             <Pill tone="success" className="h-10 px-3.5 flex items-center gap-2 rounded-xl text-xs shrink-0">
               <StatusDot tone="success" /> System Operational · 99.98% Uptime
             </Pill>
-            <Link
-              to="/brain"
-              className="inline-flex h-10 items-center gap-2 rounded-xl bg-[#0F4C81] px-4 text-xs font-bold text-[#FFFFFF] shadow-sm hover:bg-[#0A3A63] hover:shadow-md transition-all whitespace-nowrap shrink-0"
-            >
-              <Sparkles className="size-4 text-[#FFFFFF]" /> Ask Company AI
-            </Link>
           </div>
         }
       />

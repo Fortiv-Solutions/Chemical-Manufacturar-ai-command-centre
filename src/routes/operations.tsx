@@ -437,7 +437,7 @@ function BusinessOperationsPage() {
             columns={[
               { key: "name", header: "Document Name", render: (r) => <span className="font-bold text-[#1E293B]">{r.name}</span> },
               { key: "type", header: "Type", render: (r) => <Pill tone="info">{r.type}</Pill> },
-              { key: "date", header: "Last Updated", render: (r) => <span className="text-[#64748B] num">{r.date}</span> },
+              { key: "updated", header: "Last Updated", render: (r) => <span className="text-[#64748B] num">{r.updated || r.effectiveDate || r.lastUpdated || "2 hours ago"}</span> },
             ]}
             searchKeys={["name", "type"]}
             placeholder="Search department documents…"
