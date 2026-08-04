@@ -41,7 +41,7 @@ function InsightsReportingWorkspacePage() {
         eyebrow="Insights & Reporting Workspace"
         title="Business Intelligence & MIS Center"
         description="Interactive analytics, operational reporting, financial ROI forecasting, and automated executive board packs."
-        actions={<Pill tone="primary"><Gauge className="size-3.5 text-[#00B8D9]" /> Live BI Cube Connected</Pill>}
+        actions={<Pill tone="primary"><Gauge className="size-3.5 text-[#0F4C81]" /> Live BI Cube Connected</Pill>}
       />
 
       {/* KPI Overview Cards */}
@@ -53,14 +53,14 @@ function InsightsReportingWorkspacePage() {
       </div>
 
       {/* Workspace Contextual Tabs */}
-      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#D9E2EC] pb-3">
+      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#E2E8F0] pb-3">
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`rounded-lg px-3.5 py-2 text-xs font-bold transition-all ${
               activeTab === tab
-                ? "bg-[#00B8D9] text-[#FFFFFF] shadow-sm"
+                ? "bg-[#0F4C81] text-[#FFFFFF] shadow-sm"
                 : "text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#1E293B]"
             }`}
           >
@@ -83,12 +83,12 @@ function InsightsReportingWorkspacePage() {
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "#FFFFFF",
-                      borderColor: "#D9E2EC",
+                      borderColor: "#E2E8F0",
                       borderRadius: "12px",
                       color: "#1E293B",
                     }}
                   />
-                  <Bar dataKey="savings" fill="#00B8D9" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="savings" fill="#0F4C81" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="target" fill="#0F4C81" radius={[4, 4, 0, 0]} opacity={0.35} />
                 </BarChart>
               </ResponsiveContainer>
@@ -112,7 +112,7 @@ function InsightsReportingWorkspacePage() {
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "#FFFFFF",
-                      borderColor: "#D9E2EC",
+                      borderColor: "#E2E8F0",
                       borderRadius: "12px",
                       color: "#1E293B",
                     }}
@@ -130,17 +130,17 @@ function InsightsReportingWorkspacePage() {
           <div className="space-y-4">
             <h3 className="text-base font-bold text-[#1E293B]">Operational Performance & Automation Telemetry</h3>
             <div className="grid gap-3.5 md:grid-cols-3">
-              <div className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <p className="text-xs font-bold text-[#0F4C81]">Plant Downtime Avoided</p>
                 <p className="text-lg font-extrabold text-[#1E293B] mt-1">428 Hours</p>
                 <Pill tone="success" className="mt-2">+$1.2M Saved</Pill>
               </div>
-              <div className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <p className="text-xs font-bold text-[#0F4C81]">Batch Yield Optimization</p>
                 <p className="text-lg font-extrabold text-[#1E293B] mt-1">+4.2% Yield</p>
                 <Pill tone="primary" className="mt-2">Quality Control Verified</Pill>
               </div>
-              <div className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <p className="text-xs font-bold text-[#0F4C81]">Invoice Cycle Time</p>
                 <p className="text-lg font-extrabold text-[#1E293B] mt-1">1.4 Days (was 18 days)</p>
                 <Pill tone="success" className="mt-2">-92% Faster</Pill>

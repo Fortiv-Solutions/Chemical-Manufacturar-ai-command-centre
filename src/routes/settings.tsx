@@ -24,7 +24,7 @@ function SettingsPage() {
           </div>
           <div className="space-y-4 pt-4 border-t border-[#E8EDF3]">
             <h3 className="text-base font-bold text-[#1E293B]">Notification Webhooks</h3>
-            <div className="flex items-center justify-between rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+            <div className="flex items-center justify-between rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
               <div>
                 <p className="text-sm font-bold text-[#1E293B]">Slack / Teams High-Risk Approvals</p>
                 <p className="text-xs text-[#64748B]">Sends instant notifications for pending plant approvals &gt; $50k</p>

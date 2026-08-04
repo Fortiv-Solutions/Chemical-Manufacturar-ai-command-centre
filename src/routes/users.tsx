@@ -33,7 +33,7 @@ function UsersPage() {
       <GlassCard className="p-6">
         <div className="space-y-3">
           {users.map((u, i) => (
-            <div key={i} className="flex items-center justify-between gap-3 rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+            <div key={i} className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
               <div className="flex items-center gap-3">
                 <div className="grid size-10 place-items-center rounded-full bg-[#0F4C81] text-[#FFFFFF] text-xs font-bold">
                   {u.name.split(" ").map(n => n[0]).join("")}

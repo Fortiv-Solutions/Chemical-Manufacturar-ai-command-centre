@@ -53,10 +53,10 @@ export function FilterTable<T extends object>({
   const slice = filtered.slice(current * pageSize, current * pageSize + pageSize);
 
   return (
-    <GlassCard className="p-0 overflow-hidden border border-[#D9E2EC] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(15,23,42,0.04)]">
-      <div className="flex flex-wrap items-center gap-3 border-b border-[#D9E2EC] bg-[#F8FAFC] p-3.5">
-        <div className="flex h-9.5 min-w-56 flex-1 items-center gap-2.5 rounded-full border border-[#D9E2EC] bg-[#FFFFFF] px-3.5 focus-within:border-[#00B8D9] focus-within:ring-1 focus-within:ring-[#00B8D9]/30">
-          <Search className="size-4 text-[#00B8D9]" />
+    <GlassCard className="p-0 overflow-hidden border border-[#E2E8F0] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(15,23,42,0.04)]">
+      <div className="flex flex-wrap items-center gap-3 border-b border-[#E2E8F0] bg-[#F8FAFC] p-3.5">
+        <div className="flex h-9.5 min-w-56 flex-1 items-center gap-2.5 rounded-full border border-[#E2E8F0] bg-[#FFFFFF] px-3.5 focus-within:border-[#0F4C81] focus-within:ring-1 focus-within:ring-[#0F4C81]/30">
+          <Search className="size-4 text-[#0F4C81]" />
           <input
             value={query}
             onChange={(e) => {
@@ -76,7 +76,7 @@ export function FilterTable<T extends object>({
               setFilters((prev) => ({ ...prev, [String(f.key)]: e.target.value }));
               setPage(0);
             }}
-            className="h-9.5 rounded-lg border border-[#D9E2EC] bg-[#FFFFFF] px-3 text-[13px] font-bold text-[#1E293B] outline-none hover:border-[#00B8D9] cursor-pointer"
+            className="h-9.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 text-[13px] font-bold text-[#1E293B] outline-none hover:border-[#0F4C81] cursor-pointer"
           >
             <option value="" className="bg-[#FFFFFF]">All {f.label}</option>
             {f.options.map((o) => (
@@ -94,7 +94,7 @@ export function FilterTable<T extends object>({
 
       <div className="overflow-x-auto">
         <table className="w-full min-w-[720px] text-left text-[13px]">
-          <thead className="sticky top-0 z-10 bg-[#F8FAFC] border-b border-[#D9E2EC]">
+          <thead className="sticky top-0 z-10 bg-[#F8FAFC] border-b border-[#E2E8F0]">
             <tr className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-[#0F4C81]">
               {columns.map((c) => (
                 <th key={c.key} className={cn("px-5 py-3.5 font-bold", c.className)}>
@@ -107,7 +107,7 @@ export function FilterTable<T extends object>({
             {slice.map((row, i) => (
               <tr
                 key={i}
-                className="transition-colors hover:bg-[#EBF8FA]"
+                className="transition-colors hover:bg-[#EBF1F8]"
               >
                 {columns.map((c) => (
                   <td key={c.key} className={cn("px-5 py-3.5 align-middle text-[#1E293B] font-medium", c.className)}>
@@ -128,7 +128,7 @@ export function FilterTable<T extends object>({
       </div>
 
       {pages > 1 && (
-        <div className="flex items-center justify-between gap-3 border-t border-[#D9E2EC] bg-[#F8FAFC] p-3.5 text-xs text-[#64748B]">
+        <div className="flex items-center justify-between gap-3 border-t border-[#E2E8F0] bg-[#F8FAFC] p-3.5 text-xs text-[#64748B]">
           <span className="num font-bold">
             Page {current + 1} of {pages}
           </span>
@@ -136,14 +136,14 @@ export function FilterTable<T extends object>({
             <button
               onClick={() => setPage(Math.max(0, current - 1))}
               disabled={current === 0}
-              className="rounded-lg border border-[#D9E2EC] bg-[#FFFFFF] px-3 py-1.5 font-bold text-[#1E293B] transition-colors hover:bg-[#F1F5F9] disabled:opacity-40"
+              className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 font-bold text-[#1E293B] transition-colors hover:bg-[#F1F5F9] disabled:opacity-40"
             >
               Previous
             </button>
             <button
               onClick={() => setPage(Math.min(pages - 1, current + 1))}
               disabled={current >= pages - 1}
-              className="rounded-lg border border-[#D9E2EC] bg-[#FFFFFF] px-3 py-1.5 font-bold text-[#1E293B] transition-colors hover:bg-[#F1F5F9] disabled:opacity-40"
+              className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 font-bold text-[#1E293B] transition-colors hover:bg-[#F1F5F9] disabled:opacity-40"
             >
               Next
             </button>

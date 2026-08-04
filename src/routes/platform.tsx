@@ -40,14 +40,14 @@ function PlatformAdministrationWorkspacePage() {
       </div>
 
       {/* Workspace Contextual Tabs */}
-      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#D9E2EC] pb-3">
+      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#E2E8F0] pb-3">
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`rounded-lg px-3.5 py-2 text-xs font-bold transition-all ${
               activeTab === tab
-                ? "bg-[#00B8D9] text-[#FFFFFF] shadow-sm"
+                ? "bg-[#0F4C81] text-[#FFFFFF] shadow-sm"
                 : "text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#1E293B]"
             }`}
           >
@@ -95,7 +95,7 @@ function PlatformAdministrationWorkspacePage() {
         <GlassCard className="p-6">
           <div className="grid gap-3.5 md:grid-cols-3">
             {INTEGRATIONS.map((sys) => (
-              <div key={sys.name} className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div key={sys.name} className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#0F4C81]">{sys.category}</span>
                   <Pill tone={sys.status === "Connected" ? "success" : "warning"}>{sys.status}</Pill>
@@ -130,12 +130,12 @@ function PlatformAdministrationWorkspacePage() {
           <div className="space-y-4">
             <h3 className="text-base font-bold text-[#1E293B]">Enterprise System Configuration & Health</h3>
             <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <p className="text-xs font-bold text-[#0F4C81]">Industrial Light Theme</p>
                 <p className="text-xs text-[#64748B] mt-1">Configured for Microsoft Fabric / SAP Fiori Light palette</p>
                 <Pill tone="success" className="mt-2">Enforced</Pill>
               </div>
-              <div className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <p className="text-xs font-bold text-[#0F4C81]">SOC2 Audit & Compliance</p>
                 <p className="text-xs text-[#64748B] mt-1">Full audit logging & prompt guardrails active</p>
                 <Pill tone="success" className="mt-2">100% Compliant</Pill>

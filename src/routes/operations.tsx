@@ -204,7 +204,7 @@ function BusinessOperationsPage() {
             <select
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
-              className="h-10 rounded-xl border border-[#D9E2EC] bg-[#FFFFFF] px-3.5 text-xs font-bold text-[#1E293B] shadow-xs outline-none focus:border-[#00B8D9]"
+              className="h-10 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] px-3.5 text-xs font-bold text-[#1E293B] shadow-xs outline-none focus:border-[#0F4C81]"
             >
               {ALL_39_DEPARTMENTS.map((d) => (
                 <option key={d} value={d}>
@@ -225,14 +225,14 @@ function BusinessOperationsPage() {
       </div>
 
       {/* Contextual Workspace Navigation Tabs */}
-      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#D9E2EC] pb-3">
+      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#E2E8F0] pb-3">
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`rounded-lg px-3.5 py-2 text-xs font-bold transition-all ${
               activeTab === tab
-                ? "bg-[#00B8D9] text-[#FFFFFF] shadow-sm"
+                ? "bg-[#0F4C81] text-[#FFFFFF] shadow-sm"
                 : "text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#1E293B]"
             }`}
           >
@@ -244,10 +244,10 @@ function BusinessOperationsPage() {
       {/* Tab Panels */}
       {activeTab === "Departments" && (
         <GlassCard className="p-6">
-          <div className="flex items-center justify-between border-b border-[#D9E2EC] pb-4 mb-6">
+          <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-4 mb-6">
             <div>
               <h3 className="text-base font-bold text-[#1E293B] flex items-center gap-2">
-                <Building2 className="size-5 text-[#00B8D9]" /> 39 Chemical Manufacturing Department Directory
+                <Building2 className="size-5 text-[#0F4C81]" /> 39 Chemical Manufacturing Department Directory
               </h3>
               <p className="text-xs text-[#64748B] mt-1">Launch any department&apos;s full dedicated workspace or set it as the active operational context.</p>
             </div>
@@ -256,7 +256,7 @@ function BusinessOperationsPage() {
               value={deptSearch}
               onChange={(e) => setDeptSearch(e.target.value)}
               placeholder="Search 39 departments…"
-              className="h-10 w-64 rounded-xl border border-[#D9E2EC] bg-[#FFFFFF] px-3.5 text-xs text-[#1E293B] outline-none focus:border-[#00B8D9]"
+              className="h-10 w-64 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] px-3.5 text-xs text-[#1E293B] outline-none focus:border-[#0F4C81]"
             />
           </div>
 
@@ -266,8 +266,8 @@ function BusinessOperationsPage() {
               return (
                 <div
                   key={d}
-                  className={`rounded-xl border p-4 transition-all hover:border-[#00B8D9] ${
-                    selectedDept === d ? "border-[#00B8D9] bg-[#EBF8FA]" : "border-[#D9E2EC] bg-[#F8FAFC]"
+                  className={`rounded-xl border p-4 transition-all hover:border-[#0F4C81] ${
+                    selectedDept === d ? "border-[#0F4C81] bg-[#EBF1F8]" : "border-[#E2E8F0] bg-[#F8FAFC]"
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -286,7 +286,7 @@ function BusinessOperationsPage() {
                     <Link
                       to="/departments/$slug"
                       params={{ slug }}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#00B8D9] py-2 text-xs font-bold text-[#FFFFFF] hover:bg-[#009BB8] transition-colors shadow-xs"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#0F4C81] py-2 text-xs font-bold text-[#FFFFFF] hover:bg-[#0A3A63] transition-colors shadow-xs"
                     >
                       Workspace <ExternalLink className="size-3" />
                     </Link>
@@ -295,7 +295,7 @@ function BusinessOperationsPage() {
                         setSelectedDept(d);
                         setActiveTab("Dashboard");
                       }}
-                      className="rounded-lg border border-[#D9E2EC] bg-[#FFFFFF] px-3 py-2 text-xs font-bold text-[#0F4C81] hover:bg-[#F1F5F9]"
+                      className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-2 text-xs font-bold text-[#0F4C81] hover:bg-[#F1F5F9]"
                     >
                       Select
                     </button>
@@ -311,11 +311,11 @@ function BusinessOperationsPage() {
         <div className="grid gap-6 lg:grid-cols-2">
           <GlassCard className="p-6">
             <h3 className="text-base font-bold text-[#1E293B] flex items-center gap-2">
-              <ListChecks className="size-4.5 text-[#00B8D9]" /> Operational Tasks ({deptTasks.length})
+              <ListChecks className="size-4.5 text-[#0F4C81]" /> Operational Tasks ({deptTasks.length})
             </h3>
             <ul className="mt-4 space-y-3">
               {deptTasks.map((t) => (
-                <li key={t.id} className="flex items-center justify-between gap-3 rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-3.5">
+                <li key={t.id} className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3.5">
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-[#1E293B] truncate">{t.task}</p>
                     <p className="text-[11px] text-[#64748B] mt-0.5">Assigned: {t.assignee} · Due: {t.dueDate}</p>
@@ -332,7 +332,7 @@ function BusinessOperationsPage() {
             </h3>
             <ul className="mt-4 space-y-3">
               {deptApprovals.map((a) => (
-                <li key={a.id} className="flex items-center justify-between gap-3 rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-3.5">
+                <li key={a.id} className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3.5">
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-[#1E293B] truncate">{a.subject}</p>
                     <p className="text-[11px] text-[#64748B] mt-0.5">Requested by {a.requester} · Value: {a.amount}</p>
@@ -358,8 +358,8 @@ function BusinessOperationsPage() {
                     <CartesianGrid stroke="#E8EDF3" strokeDasharray="3 3" vertical={false} />
                     <XAxis dataKey="month" stroke="#64748B" fontSize={11} />
                     <YAxis stroke="#64748B" fontSize={11} width={28} />
-                    <Tooltip contentStyle={{ backgroundColor: "#FFFFFF", borderColor: "#D9E2EC", borderRadius: 12, color: "#1E293B" }} />
-                    <Bar dataKey="throughput" fill="#00B8D9" radius={[4, 4, 0, 0]} name="Throughput %" />
+                    <Tooltip contentStyle={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0", borderRadius: 12, color: "#1E293B" }} />
+                    <Bar dataKey="throughput" fill="#0F4C81" radius={[4, 4, 0, 0]} name="Throughput %" />
                     <Bar dataKey="efficiency" fill="#0F4C81" radius={[4, 4, 0, 0]} name="Efficiency %" />
                   </BarChart>
                 </ResponsiveContainer>
@@ -372,7 +372,7 @@ function BusinessOperationsPage() {
                 <div>
                   <div className="flex justify-between text-xs font-bold text-[#1E293B] mb-1.5">
                     <span>Task Completion Index</span>
-                    <span className="text-[#00B8D9] font-extrabold num">94.2%</span>
+                    <span className="text-[#0F4C81] font-extrabold num">94.2%</span>
                   </div>
                   <MeterBar value={94.2} tone="primary" />
                 </div>
@@ -465,7 +465,7 @@ function BusinessOperationsPage() {
         <GlassCard className="p-6">
           <div className="grid gap-3.5 md:grid-cols-2">
             {deptAutomations.map((a) => (
-              <div key={a.id} className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div key={a.id} className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#0F4C81]">{a.code}</span>
                   <Pill tone="success">{a.status}</Pill>
@@ -482,10 +482,10 @@ function BusinessOperationsPage() {
         <GlassCard className="p-6">
           <div className="space-y-4">
             <h3 className="text-base font-bold text-[#1E293B] flex items-center gap-2">
-              <Sparkles className="size-4.5 text-[#00B8D9]" /> {selectedDept} AI Assistant
+              <Sparkles className="size-4.5 text-[#0F4C81]" /> {selectedDept} AI Assistant
             </h3>
             <p className="text-xs text-[#64748B]">Contextually grounded in {selectedDept}&apos;s KPIs, documents, SOPs, and open approvals.</p>
-            <div className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4 text-xs font-bold text-[#1E293B]">
+            <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 text-xs font-bold text-[#1E293B]">
               Ask any question or trigger operational workflows for the {selectedDept} department.
             </div>
           </div>
@@ -496,15 +496,15 @@ function BusinessOperationsPage() {
         <GlassCard className="p-6">
           <div className="space-y-3">
             {deptMIS.map((r, i) => (
-              <div key={i} className="flex items-center justify-between gap-3 rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div key={i} className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <div className="flex items-center gap-3">
-                  <FileSpreadsheet className="size-5 text-[#00B8D9]" />
+                  <FileSpreadsheet className="size-5 text-[#0F4C81]" />
                   <div>
                     <p className="text-sm font-bold text-[#1E293B]">{r.title}</p>
                     <p className="text-xs text-[#64748B]">Department: {selectedDept} · Frequency: {r.frequency}</p>
                   </div>
                 </div>
-                <button className="inline-flex items-center gap-1.5 rounded-lg bg-[#00B8D9] px-3.5 py-1.5 text-xs font-bold text-[#FFFFFF] shadow-sm hover:bg-[#009BB8]">
+                <button className="inline-flex items-center gap-1.5 rounded-lg bg-[#0F4C81] px-3.5 py-1.5 text-xs font-bold text-[#FFFFFF] shadow-sm hover:bg-[#0A3A63]">
                   <Download className="size-3.5" /> Export PDF
                 </button>
               </div>
@@ -521,15 +521,15 @@ function BusinessOperationsPage() {
               <AreaChart data={DEPT_PERFORMANCE}>
                 <defs>
                   <linearGradient id="cyanGradOpt" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#00B8D9" stopOpacity={0.25} />
-                    <stop offset="95%" stopColor="#00B8D9" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#0F4C81" stopOpacity={0.25} />
+                    <stop offset="95%" stopColor="#0F4C81" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid stroke="#E8EDF3" strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="month" stroke="#64748B" fontSize={11} />
                 <YAxis stroke="#64748B" fontSize={11} width={32} />
-                <Tooltip contentStyle={{ backgroundColor: "#FFFFFF", borderColor: "#D9E2EC", borderRadius: 12, color: "#1E293B" }} />
-                <Area type="monotone" dataKey="accuracy" name="Accuracy %" stroke="#00B8D9" strokeWidth={3} fill="url(#cyanGradOpt)" />
+                <Tooltip contentStyle={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0", borderRadius: 12, color: "#1E293B" }} />
+                <Area type="monotone" dataKey="accuracy" name="Accuracy %" stroke="#0F4C81" strokeWidth={3} fill="url(#cyanGradOpt)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

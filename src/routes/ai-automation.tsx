@@ -117,7 +117,7 @@ function AIAutomationWorkspacePage() {
         eyebrow="AI & Automation Workspace"
         title="Enterprise AI & Automation Control Center"
         description="Unified control hub for 58 AI Agents, 12 Copilots, 208 Automations, n8n Workflow Builder, Model Registry, and Real-time Execution Logs."
-        actions={<Pill tone="primary"><Bot className="size-3.5 text-[#00B8D9]" /> {activeTab} Active</Pill>}
+        actions={<Pill tone="primary"><Bot className="size-3.5 text-[#0F4C81]" /> {activeTab} Active</Pill>}
       />
 
       {/* Dynamic Tab-Specific KPI Cards */}
@@ -128,14 +128,14 @@ function AIAutomationWorkspacePage() {
       </div>
 
       {/* Workspace Contextual Tabs */}
-      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#D9E2EC] pb-3">
+      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#E2E8F0] pb-3">
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`rounded-lg px-3.5 py-2 text-xs font-bold transition-all ${
               activeTab === tab
-                ? "bg-[#00B8D9] text-[#FFFFFF] shadow-sm"
+                ? "bg-[#0F4C81] text-[#FFFFFF] shadow-sm"
                 : "text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#1E293B]"
             }`}
           >
@@ -149,11 +149,11 @@ function AIAutomationWorkspacePage() {
         <div className="grid gap-6 lg:grid-cols-2">
           <GlassCard className="p-6">
             <h3 className="text-base font-bold text-[#1E293B] flex items-center gap-2 mb-4">
-              <Bot className="size-4.5 text-[#00B8D9]" /> Top Active AI Agents ({AGENTS.length})
+              <Bot className="size-4.5 text-[#0F4C81]" /> Top Active AI Agents ({AGENTS.length})
             </h3>
             <ul className="space-y-3">
               {AGENTS.slice(0, 5).map((a) => (
-                <li key={a.id} className="flex items-center justify-between gap-3 rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-3.5">
+                <li key={a.id} className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3.5">
                   <div>
                     <p className="text-xs font-bold text-[#1E293B]">{a.name}</p>
                     <p className="text-[11px] text-[#64748B]">{a.department} · {a.purpose}</p>
@@ -170,7 +170,7 @@ function AIAutomationWorkspacePage() {
             </h3>
             <ul className="space-y-3">
               {AUTOMATIONS.slice(0, 5).map((a) => (
-                <li key={a.id} className="flex items-center justify-between gap-3 rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-3.5">
+                <li key={a.id} className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3.5">
                   <div>
                     <p className="text-xs font-bold text-[#1E293B]">{a.code} · {a.title}</p>
                     <p className="text-[11px] text-[#64748B]">{a.department} · ROI: {a.roi}</p>
@@ -204,13 +204,13 @@ function AIAutomationWorkspacePage() {
         <GlassCard className="p-6">
           <div className="grid gap-3.5 md:grid-cols-3">
             {COPILOTS.map((c) => (
-              <div key={c.id} className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div key={c.id} className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <p className="text-sm font-bold text-[#1E293B]">{c.name}</p>
                 <p className="text-xs text-[#0F4C81] font-semibold mt-0.5">{c.department}</p>
                 <p className="text-xs text-[#64748B] mt-2 leading-relaxed">{c.description}</p>
                 <div className="mt-3 flex items-center justify-between">
                   <Pill tone="success">{c.adoption}% adoption</Pill>
-                  <span className="text-xs font-bold text-[#00B8D9]">{c.conversations} chats</span>
+                  <span className="text-xs font-bold text-[#0F4C81]">{c.conversations} chats</span>
                 </div>
               </div>
             ))}
@@ -237,14 +237,14 @@ function AIAutomationWorkspacePage() {
 
       {activeTab === "Workflow Builder" && (
         <GlassCard className="p-6">
-          <div className="flex items-center justify-between border-b border-[#D9E2EC] pb-4 mb-6">
+          <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-4 mb-6">
             <div>
               <h3 className="text-base font-bold text-[#1E293B] flex items-center gap-2">
-                <Workflow className="size-5 text-[#00B8D9]" /> Visual Canvas — n8n Style Chemical Process Orchestrator
+                <Workflow className="size-5 text-[#0F4C81]" /> Visual Canvas — n8n Style Chemical Process Orchestrator
               </h3>
               <p className="text-xs text-[#64748B] mt-1">Configure AI decision nodes, SAP ERP triggers, regulatory approval gates, and automated retries.</p>
             </div>
-            <button className="inline-flex items-center gap-2 rounded-lg bg-[#00B8D9] px-4 py-2 text-xs font-bold text-[#FFFFFF] shadow-sm hover:bg-[#009BB8]">
+            <button className="inline-flex items-center gap-2 rounded-lg bg-[#0F4C81] px-4 py-2 text-xs font-bold text-[#FFFFFF] shadow-sm hover:bg-[#0A3A63]">
               <Play className="size-3.5" /> Execute Canvas
             </button>
           </div>
@@ -256,7 +256,7 @@ function AIAutomationWorkspacePage() {
               { type: "Decision Gate Node", role: "Tolerance Evaluation", detail: "Checks variance against PO rules", tone: "warning" },
               { type: "Approval / Post Node", role: "Human Escalation", detail: "Posts to SAP or routes to Manager", tone: "success" },
             ].map((node, i) => (
-              <div key={i} className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4 relative shadow-xs">
+              <div key={i} className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 relative shadow-xs">
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0F4C81]">Step #{i + 1}</span>
                 <p className="text-sm font-extrabold text-[#1E293B] mt-1">{node.type}</p>
                 <Pill tone={node.tone as any} className="mt-2">{node.role}</Pill>
@@ -322,7 +322,7 @@ function AIAutomationWorkspacePage() {
         <GlassCard className="p-6">
           <div className="grid gap-3.5 md:grid-cols-3">
             {INTEGRATIONS.map((sys) => (
-              <div key={sys.name} className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div key={sys.name} className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-[#0F4C81]">{sys.category}</span>
                   <Pill tone={sys.status === "Connected" ? "success" : "warning"}>{sys.status}</Pill>
@@ -346,7 +346,7 @@ function AIAutomationWorkspacePage() {
               "[08:12:10] WARN: Plant Reactor #4 Sensor telemetry spike (74°C) -> Escalated to On-Call Engineer Dr. Sharma",
               "[08:10:00] CRON: Executed scheduled MSDS compliance scan across 340 active regulatory sheets",
             ].map((log, idx) => (
-              <div key={idx} className="rounded-lg border border-[#D9E2EC] bg-[#F8FAFC] p-3 text-[#1E293B]">
+              <div key={idx} className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3 text-[#1E293B]">
                 {log}
               </div>
             ))}

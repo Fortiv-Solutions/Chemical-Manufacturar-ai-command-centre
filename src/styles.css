@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 /*
- * AI Command Center — Enterprise Light AI Operating System.
- * Clean, high-precision Light theme inspired by Microsoft Fabric, SAP Fiori, Honeywell Forge & Siemens Xcelerator.
+ * AI Command Center — Premium Enterprise Industrial Theme.
+ * Inspired by Microsoft Fabric, SAP Fiori, Honeywell Forge, Siemens Xcelerator & Palantir Foundry.
  */
 
 @theme inline {
@@ -15,22 +16,22 @@
 
   --radius-sm: 6px;
   --radius-md: 10px;
-  --radius-lg: 14px; /* 14px card radius */
-  --radius-xl: 16px;
-  --radius-2xl: 20px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-2xl: 22px;
 
-  /* Color Mappings - Exact Light Hex Values */
-  --color-background: #F7F9FC;
-  --color-surface: #F2F6FA;
-  --color-surface-2: #EEF3F8;
+  /* Color Mappings — Industrial Enterprise Palette */
+  --color-background: #F5F7FA;
+  --color-surface: #F0F3F7;
+  --color-surface-2: #EBF0F5;
   --color-sidebar: #F4F7FA;
   --color-topnav: #FFFFFF;
   --color-card: #FFFFFF;
   --color-card-foreground: #1E293B;
   --color-popover: #FFFFFF;
   --color-popover-foreground: #1E293B;
-  --color-hover: #F1F5F9;
-  --color-border: #D9E2EC;
+  --color-hover: #F0F4F8;
+  --color-border: #E2E8F0;
   --color-border-strong: #CBD5E1;
   --color-divider: #E8EDF3;
 
@@ -39,16 +40,16 @@
   --color-muted-foreground: #94A3B8;
   --color-disabled-foreground: #CBD5E1;
 
-  --color-primary: #00B8D9; /* Industrial Cyan */
-  --color-primary-hover: #009BB8;
+  --color-primary: #0F4C81; /* Industrial Blue */
+  --color-primary-hover: #0A3A63;
   --color-primary-foreground: #FFFFFF;
 
-  --color-secondary: #0F4C81; /* Enterprise Blue */
+  --color-secondary: #147A7E; /* Polymer Teal */
   --color-secondary-foreground: #FFFFFF;
 
   --color-muted: #F1F5F9;
-  --color-accent: #EBF8FA;
-  --color-accent-foreground: #00B8D9;
+  --color-accent: #EBF1F8;
+  --color-accent-foreground: #0F4C81;
 
   --color-success: #22C55E;
   --color-success-foreground: #FFFFFF;
@@ -56,71 +57,71 @@
   --color-warning-foreground: #FFFFFF;
   --color-destructive: #EF4444;
   --color-destructive-foreground: #FFFFFF;
-  --color-info: #3B82F6;
+  --color-info: #2F80ED;
 
   --color-sidebar-foreground: #1E293B;
-  --color-sidebar-primary: #00B8D9;
+  --color-sidebar-primary: #0F4C81;
   --color-sidebar-primary-foreground: #FFFFFF;
-  --color-sidebar-accent: #EBF8FA;
-  --color-sidebar-accent-foreground: #00B8D9;
-  --color-sidebar-border: #D9E2EC;
+  --color-sidebar-accent: #EBF1F8;
+  --color-sidebar-accent-foreground: #0F4C81;
+  --color-sidebar-border: #E2E8F0;
 
-  --color-chart-1: #00B8D9; /* Industrial Cyan */
-  --color-chart-2: #0F4C81; /* Enterprise Blue */
+  --color-chart-1: #0F4C81; /* Industrial Blue */
+  --color-chart-2: #147A7E; /* Polymer Teal */
   --color-chart-3: #22C55E; /* Emerald */
   --color-chart-4: #F59E0B; /* Amber */
-  --color-chart-5: #3B82F6; /* Blue */
+  --color-chart-5: #2F80ED; /* Accent Blue */
 
-  --shadow-elevated: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 0 0 1px #D9E2EC;
-  --shadow-card-hover: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 0 0 1px #00B8D9;
+  --shadow-elevated: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 0 0 1px #E2E8F0;
+  --shadow-card-hover: 0 10px 25px -5px rgba(15, 76, 129, 0.08), 0 0 0 1px #0F4C81;
 
   --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
   --animate-rise: rise 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 :root {
-  --radius: 14px;
+  --radius: 16px;
 
-  --background: #F7F9FC;
+  --background: #F5F7FA;
   --foreground: #1E293B;
-  --surface: #F2F6FA;
-  --surface-2: #EEF3F8;
+  --surface: #F0F3F7;
+  --surface-2: #EBF0F5;
   --card: #FFFFFF;
   --card-foreground: #1E293B;
   --popover: #FFFFFF;
   --popover-foreground: #1E293B;
 
-  --primary: #00B8D9;
-  --primary-hover: #009BB8;
+  --primary: #0F4C81;
+  --primary-hover: #0A3A63;
   --primary-foreground: #FFFFFF;
 
-  --secondary: #0F4C81;
+  --secondary: #147A7E;
   --secondary-foreground: #FFFFFF;
   --muted: #F1F5F9;
   --muted-foreground: #64748B;
-  --accent: #EBF8FA;
-  --accent-foreground: #00B8D9;
+  --accent: #EBF1F8;
+  --accent-foreground: #0F4C81;
 
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   --success: #22C55E;
   --warning: #F59E0B;
-  --info: #3B82F6;
+  --info: #2F80ED;
 
-  --border: #D9E2EC;
+  --border: #E2E8F0;
   --border-strong: #CBD5E1;
   --input: #FFFFFF;
-  --ring: rgba(0, 184, 217, 0.3);
+  --ring: rgba(15, 76, 129, 0.25);
 
   --sidebar: #F4F7FA;
   --sidebar-foreground: #1E293B;
-  --sidebar-primary: #00B8D9;
+  --sidebar-primary: #0F4C81;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #EBF8FA;
-  --sidebar-accent-foreground: #00B8D9;
-  --sidebar-border: #D9E2EC;
+  --sidebar-accent: #EBF1F8;
+  --sidebar-accent-foreground: #0F4C81;
+  --sidebar-border: #E2E8F0;
 
-  --gradient-primary: linear-gradient(135deg, #00B8D9 0%, #0F4C81 100%);
+  --gradient-primary: linear-gradient(135deg, #0F4C81 0%, #147A7E 100%);
 }
 
 @keyframes pulse-soft {
@@ -139,20 +140,20 @@
   }
 }
 
-/* Light Enterprise Card Utility (No glow, no dark transparency) */
+/* Premium Enterprise Card Utility */
 @utility glass {
   background-color: #FFFFFF;
-  border: 1px solid #D9E2EC;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
 @utility glass-panel {
   background-color: #FFFFFF;
-  border: 1px solid #D9E2EC;
+  border: 1px solid #E2E8F0;
 }
 
 @utility mesh-bg {
-  background-color: #F7F9FC;
+  background-color: #F5F7FA;
 }
 
 @utility num {
@@ -163,16 +164,16 @@
 
 @layer base {
   * {
-    border-color: #D9E2EC;
+    border-color: #E2E8F0;
   }
 
   html {
     color-scheme: light;
-    background-color: #F7F9FC;
+    background-color: #F5F7FA;
   }
 
   body {
-    background-color: #F7F9FC;
+    background-color: #F5F7FA;
     color: #1E293B;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -200,4 +201,3 @@
     background: transparent;
   }
 }
-

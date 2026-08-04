@@ -33,13 +33,13 @@ function GovernancePage() {
               { name: "Gemini 1.5 Pro", provider: "Google", task: "Large Document Intelligence", latency: "280ms", status: "Active" },
               { name: "Llama 3.1 70B", provider: "Meta / On-Prem", task: "Plant Safety Guardrails", latency: "95ms", status: "Active" },
             ].map((m, i) => (
-              <div key={i} className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div key={i} className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-bold text-[#1E293B]">{m.name}</p>
                   <Pill tone="success">{m.status}</Pill>
                 </div>
                 <p className="mt-1 text-xs text-[#64748B]">{m.provider} · {m.task}</p>
-                <p className="mt-2 text-xs font-semibold text-[#00B8D9]">Latency: {m.latency}</p>
+                <p className="mt-2 text-xs font-semibold text-[#0F4C81]">Latency: {m.latency}</p>
               </div>
             ))}
           </div>

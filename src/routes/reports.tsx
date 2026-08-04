@@ -34,9 +34,9 @@ function ReportsPage() {
       <GlassCard className="p-6">
         <div className="space-y-3">
           {reports.map((r, i) => (
-            <div key={i} className="flex items-center justify-between gap-3 rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4 transition-all hover:border-[#00B8D9]">
+            <div key={i} className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 transition-all hover:border-[#0F4C81]">
               <div className="flex items-center gap-3">
-                <div className="grid size-10 place-items-center rounded-xl bg-[#00B8D9]/10 text-[#00B8D9]">
+                <div className="grid size-10 place-items-center rounded-xl bg-[#0F4C81]/10 text-[#0F4C81]">
                   <FileSpreadsheet className="size-5" />
                 </div>
                 <div>
@@ -44,7 +44,7 @@ function ReportsPage() {
                   <p className="text-xs text-[#64748B]">{r.dept} · Frequency: {r.freq}</p>
                 </div>
               </div>
-              <button className="inline-flex items-center gap-1.5 rounded-lg bg-[#00B8D9] px-3.5 py-1.5 text-xs font-bold text-[#FFFFFF] shadow-sm hover:bg-[#009BB8]">
+              <button className="inline-flex items-center gap-1.5 rounded-lg bg-[#0F4C81] px-3.5 py-1.5 text-xs font-bold text-[#FFFFFF] shadow-sm hover:bg-[#0A3A63]">
                 <Download className="size-3.5" /> Export {r.format}
               </button>
             </div>

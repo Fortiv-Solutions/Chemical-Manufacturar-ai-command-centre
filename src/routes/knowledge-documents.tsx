@@ -87,7 +87,7 @@ function KnowledgeDocumentsWorkspacePage() {
         eyebrow="Knowledge & Documents Workspace"
         title="Central Enterprise Knowledge Platform"
         description="Unified vector search and document intelligence across MSDS, TDS, Technical SOPs, Batch Records, Contracts, Invoices, Meeting Notes, and Company AI Brain."
-        actions={<Pill tone="primary"><Library className="size-3.5 text-[#00B8D9]" /> {activeTab} Active</Pill>}
+        actions={<Pill tone="primary"><Library className="size-3.5 text-[#0F4C81]" /> {activeTab} Active</Pill>}
       />
 
       {/* Dynamic Contextual KPI Cards */}
@@ -98,14 +98,14 @@ function KnowledgeDocumentsWorkspacePage() {
       </div>
 
       {/* Workspace Contextual Tabs */}
-      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#D9E2EC] pb-3">
+      <div className="flex flex-wrap items-center gap-1.5 border-b border-[#E2E8F0] pb-3">
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`rounded-lg px-3.5 py-2 text-xs font-bold transition-all ${
               activeTab === tab
-                ? "bg-[#00B8D9] text-[#FFFFFF] shadow-sm"
+                ? "bg-[#0F4C81] text-[#FFFFFF] shadow-sm"
                 : "text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#1E293B]"
             }`}
           >
@@ -135,21 +135,21 @@ function KnowledgeDocumentsWorkspacePage() {
         <GlassCard className="p-6">
           <div className="space-y-4">
             <h3 className="text-base font-bold text-[#1E293B] flex items-center gap-2">
-              <BrainCircuit className="size-5 text-[#00B8D9]" /> Chemical Enterprise AI Vector Brain
+              <BrainCircuit className="size-5 text-[#0F4C81]" /> Chemical Enterprise AI Vector Brain
             </h3>
             <p className="text-xs text-[#64748B]">Real-time RAG index containing 1.4M chunks from SAP, LIMS, SharePoint, and plant SOPs.</p>
             <div className="grid gap-3 md:grid-cols-3">
-              <div className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <p className="text-xs font-bold text-[#0F4C81]">Vector Index Status</p>
                 <p className="text-lg font-extrabold text-[#1E293B] mt-1">1,428,910 Chunks</p>
                 <Pill tone="success" className="mt-2">Real-Time Synced</Pill>
               </div>
-              <div className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <p className="text-xs font-bold text-[#0F4C81]">Embedding Model</p>
                 <p className="text-lg font-extrabold text-[#1E293B] mt-1">ChemBERTa + text-3-large</p>
                 <Pill tone="primary" className="mt-2">Hybrid Search</Pill>
               </div>
-              <div className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+              <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                 <p className="text-xs font-bold text-[#0F4C81]">Avg Citation Recall</p>
                 <p className="text-lg font-extrabold text-[#1E293B] mt-1">99.6% Precision</p>
                 <Pill tone="success" className="mt-2">Zero Hallucinations</Pill>
@@ -180,7 +180,7 @@ function KnowledgeDocumentsWorkspacePage() {
         <GlassCard className="p-6">
           <div className="space-y-4">
             <h3 className="text-base font-bold text-[#1E293B] flex items-center gap-2">
-              <Layers className="size-5 text-[#00B8D9]" /> Chemical Material & Process Knowledge Graph
+              <Layers className="size-5 text-[#0F4C81]" /> Chemical Material & Process Knowledge Graph
             </h3>
             <p className="text-xs text-[#64748B]">Connected graph relationships between Raw Solvents, Vendors, Plant Reactors, MSDS Sheets, and Regulatory Approvals.</p>
             <div className="grid gap-3.5 md:grid-cols-3">
@@ -189,12 +189,12 @@ function KnowledgeDocumentsWorkspacePage() {
                 { title: "Hazardous Solvent Logistics", items: ["REACH EHS-042", "Ethylene Glycol MSDS-772", "Global Logistics Contract"] },
                 { title: "Quality Assurance Standard", items: ["ISO 9001:2015 SOP", "LIMS Assay Log", "Batch Yield Diagnostic"] },
               ].map((c, i) => (
-                <div key={i} className="rounded-xl border border-[#D9E2EC] bg-[#F8FAFC] p-4">
+                <div key={i} className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4">
                   <p className="text-sm font-bold text-[#1E293B]">{c.title}</p>
                   <ul className="mt-2 space-y-1.5 text-xs text-[#64748B]">
                     {c.items.map((it) => (
                       <li key={it} className="flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#00B8D9]" /> {it}
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#0F4C81]" /> {it}
                       </li>
                     ))}
                   </ul>

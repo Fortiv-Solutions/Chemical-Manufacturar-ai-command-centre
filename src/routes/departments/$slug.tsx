@@ -82,7 +82,7 @@ function DepartmentDetail() {
     <div className="space-y-6">
       <Link
         to="/operations"
-        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#00B8D9] hover:underline"
+        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F4C81] hover:underline"
       >
         <ArrowLeft className="size-3.5" /> Back to Business Operations Workspace
       </Link>

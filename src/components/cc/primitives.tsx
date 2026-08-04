@@ -1,6 +1,7 @@
-import type { ReactNode } from "react";
+import type { ReactNode, ElementType } from "react";
 import { cn } from "@/lib/utils";
 
+/* ─── Glass Card ─── */
 export function GlassCard({
   className,
   children,
@@ -16,8 +17,8 @@ export function GlassCard({
     <div
       onClick={onClick}
       className={cn(
-        "group relative rounded-[14px] border border-[#D9E2EC] bg-[#FFFFFF] p-5 shadow-[0_2px_12px_rgba(15,23,42,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00B8D9] hover:shadow-[0_8px_25px_-5px_rgba(0,184,217,0.12)]",
-        glow && "border-[#00B8D9] shadow-[0_0_15px_rgba(0,184,217,0.15)]",
+        "group relative rounded-[16px] border border-[#E2E8F0] bg-[#FFFFFF] p-5 shadow-[0_1px_3px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.03)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0F4C81]/30 hover:shadow-[0_8px_25px_-5px_rgba(15,76,129,0.10)]",
+        glow && "border-[#0F4C81]/40 shadow-[0_0_15px_rgba(15,76,129,0.10)]",
         onClick && "cursor-pointer",
         className,
       )}
@@ -27,6 +28,7 @@ export function GlassCard({
   );
 }
 
+/* ─── Page Header ─── */
 export function PageHeader({
   eyebrow,
   title,
@@ -39,12 +41,12 @@ export function PageHeader({
   actions?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-4 border-b border-[#D9E2EC] pb-6 md:flex-row md:items-end md:justify-between">
+    <div className="flex flex-col gap-4 border-b border-[#E2E8F0] pb-6 md:flex-row md:items-end md:justify-between">
       <div className="min-w-0">
         {eyebrow && (
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#00B8D9]" />
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#00B8D9]">
+            <span className="h-2 w-2 rounded-full bg-[#0F4C81]" />
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0F4C81]">
               {eyebrow}
             </p>
           </div>
@@ -61,6 +63,7 @@ export function PageHeader({
   );
 }
 
+/* ─── Section Title ─── */
 export function SectionTitle({
   title,
   hint,
@@ -83,12 +86,13 @@ export function SectionTitle({
   );
 }
 
+/* ─── Tone System ─── */
 const toneMap: Record<string, string> = {
   success: "bg-[#22C55E]/10 text-[#15803D] border-[#22C55E]/30",
   warning: "bg-[#F59E0B]/10 text-[#B45309] border-[#F59E0B]/30",
   danger: "bg-[#EF4444]/10 text-[#B91C1C] border-[#EF4444]/30",
   info: "bg-[#3B82F6]/10 text-[#1D4ED8] border-[#3B82F6]/30",
-  primary: "bg-[#00B8D9]/10 text-[#00838F] border-[#00B8D9]/30",
+  primary: "bg-[#0F4C81]/10 text-[#0F4C81] border-[#0F4C81]/30",
   neutral: "bg-[#F1F5F9] text-[#475569] border-[#CBD5E1]",
 };
 
@@ -110,6 +114,7 @@ export function toneFor(value: string): Tone {
   return "primary";
 }
 
+/* ─── Pill ─── */
 export function Pill({
   children,
   tone = "neutral",
@@ -132,6 +137,7 @@ export function Pill({
   );
 }
 
+/* ─── Status Dot ─── */
 export function StatusDot({ tone = "success" }: { tone?: Tone }) {
   return (
     <span className="relative flex size-2 shrink-0 items-center justify-center">
@@ -140,7 +146,7 @@ export function StatusDot({ tone = "success" }: { tone?: Tone }) {
           "bg-[#22C55E]": tone === "success",
           "bg-[#F59E0B]": tone === "warning",
           "bg-[#EF4444]": tone === "danger",
-          "bg-[#00B8D9]": tone === "primary",
+          "bg-[#0F4C81]": tone === "primary",
           "bg-[#3B82F6]": tone === "info",
           "bg-[#64748B]": tone === "neutral",
         })}
@@ -150,7 +156,7 @@ export function StatusDot({ tone = "success" }: { tone?: Tone }) {
           "bg-[#22C55E]": tone === "success",
           "bg-[#F59E0B]": tone === "warning",
           "bg-[#EF4444]": tone === "danger",
-          "bg-[#00B8D9]": tone === "primary",
+          "bg-[#0F4C81]": tone === "primary",
           "bg-[#3B82F6]": tone === "info",
           "bg-[#64748B]": tone === "neutral",
         })}
@@ -159,6 +165,7 @@ export function StatusDot({ tone = "success" }: { tone?: Tone }) {
   );
 }
 
+/* ─── Sparkline ─── */
 export function Sparkline({ points, tone = "primary" }: { points: readonly number[]; tone?: Tone }) {
   const max = Math.max(...points);
   const min = Math.min(...points);
@@ -174,13 +181,13 @@ export function Sparkline({ points, tone = "primary" }: { points: readonly numbe
         ? "#F59E0B"
         : tone === "danger"
           ? "#EF4444"
-          : "#00B8D9";
+          : "#2F80ED";
 
   return (
     <svg viewBox="0 0 100 30" preserveAspectRatio="none" className="h-7 w-full overflow-visible">
       <defs>
         <linearGradient id={`sparkGrad-light-${tone}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={strokeColor} stopOpacity="0.2" />
+          <stop offset="0%" stopColor={strokeColor} stopOpacity="0.18" />
           <stop offset="100%" stopColor={strokeColor} stopOpacity="0.0" />
         </linearGradient>
       </defs>
@@ -201,6 +208,17 @@ export function Sparkline({ points, tone = "primary" }: { points: readonly numbe
   );
 }
 
+/* ─── StatCard — Redesigned Enterprise KPI Card ─── */
+
+const accentColors: Record<string, string> = {
+  blue: "#0F4C81",
+  teal: "#147A7E",
+  accent: "#2F80ED",
+  green: "#22C55E",
+  amber: "#F59E0B",
+  red: "#EF4444",
+};
+
 export function StatCard({
   label,
   value,
@@ -208,6 +226,10 @@ export function StatCard({
   spark,
   suffix,
   prefix,
+  icon: Icon,
+  supporting,
+  size = "md",
+  accent = "blue",
 }: {
   label: string;
   value: string | number;
@@ -215,45 +237,90 @@ export function StatCard({
   spark?: readonly number[] | undefined;
   suffix?: string | undefined;
   prefix?: string | undefined;
+  icon?: ElementType | undefined;
+  supporting?: string | undefined;
+  size?: "lg" | "md" | "sm" | undefined;
+  accent?: keyof typeof accentColors | undefined;
 }) {
   const up = (delta ?? 0) >= 0;
+  const accentColor = accentColors[accent] || accentColors.blue;
+
+  const padMap = { lg: "p-6", md: "p-5", sm: "p-4" };
+  const metricMap = { lg: "text-[32px]", md: "text-[28px]", sm: "text-[22px]" };
+  const iconSizeMap = { lg: "size-10", md: "size-9", sm: "size-8" };
+  const iconInnerMap = { lg: "size-5", md: "size-[18px]", sm: "size-4" };
+
   return (
-    <GlassCard className="p-5">
-      <div className="flex items-center justify-between gap-2">
-        <p className="text-[11px] font-bold uppercase tracking-wider text-[#64748B] truncate">{label}</p>
-        {delta !== undefined && (
-          <span
-            className={cn(
-              "inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-[11px] font-bold num",
-              up ? "bg-[#22C55E]/10 text-[#15803D]" : "bg-[#EF4444]/10 text-[#B91C1C]",
-            )}
+    <GlassCard className={cn(padMap[size], "overflow-hidden")}>
+      {/* Left accent border */}
+      <div
+        className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-[16px]"
+        style={{ backgroundColor: accentColor }}
+      />
+
+      {/* Top: Icon + Title */}
+      <div className="flex items-center gap-3">
+        {Icon && (
+          <div
+            className={cn("shrink-0 grid place-items-center rounded-xl", iconSizeMap[size])}
+            style={{ backgroundColor: `${accentColor}10` }}
           >
-            {up ? "▲" : "▼"} {Math.abs(delta)}%
-          </span>
+            <Icon className={cn(iconInnerMap[size])} style={{ color: accentColor }} />
+          </div>
         )}
+        <p className="text-[11px] font-bold uppercase tracking-wider text-[#64748B] truncate flex-1">{label}</p>
       </div>
-      <div className="mt-2.5 flex items-baseline justify-between gap-2">
-        <p className="num text-3xl font-extrabold tracking-tight text-[#1E293B]">
+
+      {/* Middle: Big Number */}
+      <div className="mt-3 flex items-baseline gap-2">
+        <p className={cn("num font-extrabold tracking-tight text-[#1E293B]", metricMap[size])}>
           {prefix}
           {value}
           {suffix && <span className="ml-1 text-sm font-semibold text-[#64748B]">{suffix}</span>}
         </p>
       </div>
-      {spark && (
-        <div className="mt-3 pt-1">
-          <Sparkline points={spark} tone={up ? "primary" : "danger"} />
-        </div>
-      )}
+
+      {/* Bottom: Supporting + Trend + Sparkline */}
+      <div className="mt-3 space-y-2">
+        {/* Supporting text */}
+        {supporting && (
+          <p className="text-[11px] font-medium text-[#64748B] leading-relaxed">{supporting}</p>
+        )}
+
+        {/* Trend indicator */}
+        {delta !== undefined && (
+          <div className="flex items-center gap-2">
+            <span
+              className={cn(
+                "inline-flex items-center gap-1 text-[11px] font-bold num",
+                up ? "text-[#15803D]" : "text-[#B91C1C]",
+              )}
+            >
+              <span className="text-[10px]">{up ? "▲" : "▼"}</span>
+              {Math.abs(delta)}%
+            </span>
+            <span className="text-[10px] text-[#94A3B8] font-medium">vs last period</span>
+          </div>
+        )}
+
+        {/* Sparkline */}
+        {spark && (
+          <div className="pt-0.5">
+            <Sparkline points={spark} tone={up ? "primary" : "danger"} />
+          </div>
+        )}
+      </div>
     </GlassCard>
   );
 }
 
+/* ─── Meter Bar ─── */
 export function MeterBar({ value, tone = "primary" }: { value: number; tone?: Tone }) {
   return (
     <div className="h-1.5 w-full overflow-hidden rounded-full bg-[#E2E8F0]">
       <div
         className={cn("h-full rounded-full transition-all duration-500", {
-          "bg-[#00B8D9]": tone === "primary",
+          "bg-[#0F4C81]": tone === "primary",
           "bg-[#22C55E]": tone === "success",
           "bg-[#F59E0B]": tone === "warning",
           "bg-[#EF4444]": tone === "danger",
@@ -266,12 +333,11 @@ export function MeterBar({ value, tone = "primary" }: { value: number; tone?: To
   );
 }
 
+/* ─── Empty Hint ─── */
 export function EmptyHint({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-[14px] border border-dashed border-[#D9E2EC] bg-[#F8FAFC] p-8 text-center text-sm font-medium text-[#64748B]">
+    <div className="rounded-[16px] border border-dashed border-[#E2E8F0] bg-[#F8FAFC] p-8 text-center text-sm font-medium text-[#64748B]">
       {children}
     </div>
   );
 }
-
-
