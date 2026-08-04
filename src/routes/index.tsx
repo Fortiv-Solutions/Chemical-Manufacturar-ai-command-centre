@@ -154,18 +154,18 @@ function Dashboard() {
             : `Department workspace: ${selectedDept} — ${filteredData.agents.length} agents, ${filteredData.automations.length} automations, ${pendingApprovals.length} pending approvals.`
         }
         actions={
-          <>
+          <div className="flex flex-wrap items-center gap-2.5">
             <DepartmentSelector selected={selectedDept} onSelect={setSelectedDept} />
-            <Pill tone="success">
+            <Pill tone="success" className="h-10 px-3.5 flex items-center gap-2 rounded-xl text-xs shrink-0">
               <StatusDot tone="success" /> System Operational · 99.98% Uptime
             </Pill>
             <Link
               to="/brain"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#0F4C81] px-4 py-2 text-xs font-bold text-[#FFFFFF] shadow-sm hover:bg-[#0A3A63] hover:shadow-md transition-all"
+              className="inline-flex h-10 items-center gap-2 rounded-xl bg-[#0F4C81] px-4 text-xs font-bold text-[#FFFFFF] shadow-sm hover:bg-[#0A3A63] hover:shadow-md transition-all whitespace-nowrap shrink-0"
             >
-              <Sparkles className="size-4" /> Ask Company AI
+              <Sparkles className="size-4 text-[#FFFFFF]" /> Ask Company AI
             </Link>
-          </>
+          </div>
         }
       />
 

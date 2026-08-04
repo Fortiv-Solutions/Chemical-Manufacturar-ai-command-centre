@@ -41,8 +41,8 @@ export function PageHeader({
   actions?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-4 border-b border-[#E2E8F0] pb-6 md:flex-row md:items-end md:justify-between">
-      <div className="min-w-0">
+    <div className="flex flex-col gap-4 border-b border-[#E2E8F0] pb-6 xl:flex-row xl:items-center xl:justify-between">
+      <div className="min-w-0 flex-1">
         {eyebrow && (
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-[#0F4C81]" />
@@ -53,12 +53,12 @@ export function PageHeader({
         )}
         <h1 className="mt-1.5 text-2xl font-extrabold tracking-tight text-[#1E293B] md:text-3xl">{title}</h1>
         {description && (
-          <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-[#64748B]">
+          <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-[#64748B]">
             {description}
           </p>
         )}
       </div>
-      {actions && <div className="flex flex-wrap items-center gap-2.5">{actions}</div>}
+      {actions && <div className="flex flex-wrap items-center gap-3 shrink-0 pt-2 xl:pt-0">{actions}</div>}
     </div>
   );
 }

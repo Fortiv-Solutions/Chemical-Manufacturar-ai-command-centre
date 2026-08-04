@@ -172,7 +172,7 @@ export function DepartmentSelector({ selected, onSelect }: DepartmentSelectorPro
       <button
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "flex items-center gap-2.5 rounded-xl border bg-white px-4 py-2.5 text-left transition-all duration-200",
+          "flex h-10 items-center gap-2.5 rounded-xl border bg-white px-3.5 text-left transition-all duration-200 shrink-0",
           open
             ? "border-[#0F4C81] shadow-[0_0_0_3px_rgba(15,76,129,0.1)]"
             : "border-[#E2E8F0] hover:border-[#0F4C81]/40 hover:shadow-sm",
