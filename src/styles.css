@@ -1,0 +1,203 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * AI Command Center — Enterprise Light AI Operating System.
+ * Clean, high-precision Light theme inspired by Microsoft Fabric, SAP Fiori, Honeywell Forge & Siemens Xcelerator.
+ */
+
+@theme inline {
+  --font-sans: "Inter", "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter", "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px; /* 14px card radius */
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+
+  /* Color Mappings - Exact Light Hex Values */
+  --color-background: #F7F9FC;
+  --color-surface: #F2F6FA;
+  --color-surface-2: #EEF3F8;
+  --color-sidebar: #F4F7FA;
+  --color-topnav: #FFFFFF;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1E293B;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1E293B;
+  --color-hover: #F1F5F9;
+  --color-border: #D9E2EC;
+  --color-border-strong: #CBD5E1;
+  --color-divider: #E8EDF3;
+
+  --color-foreground: #1E293B;
+  --color-secondary-foreground: #64748B;
+  --color-muted-foreground: #94A3B8;
+  --color-disabled-foreground: #CBD5E1;
+
+  --color-primary: #00B8D9; /* Industrial Cyan */
+  --color-primary-hover: #009BB8;
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: #0F4C81; /* Enterprise Blue */
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-muted: #F1F5F9;
+  --color-accent: #EBF8FA;
+  --color-accent-foreground: #00B8D9;
+
+  --color-success: #22C55E;
+  --color-success-foreground: #FFFFFF;
+  --color-warning: #F59E0B;
+  --color-warning-foreground: #FFFFFF;
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
+  --color-info: #3B82F6;
+
+  --color-sidebar-foreground: #1E293B;
+  --color-sidebar-primary: #00B8D9;
+  --color-sidebar-primary-foreground: #FFFFFF;
+  --color-sidebar-accent: #EBF8FA;
+  --color-sidebar-accent-foreground: #00B8D9;
+  --color-sidebar-border: #D9E2EC;
+
+  --color-chart-1: #00B8D9; /* Industrial Cyan */
+  --color-chart-2: #0F4C81; /* Enterprise Blue */
+  --color-chart-3: #22C55E; /* Emerald */
+  --color-chart-4: #F59E0B; /* Amber */
+  --color-chart-5: #3B82F6; /* Blue */
+
+  --shadow-elevated: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 0 0 1px #D9E2EC;
+  --shadow-card-hover: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 0 0 1px #00B8D9;
+
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-rise: rise 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+:root {
+  --radius: 14px;
+
+  --background: #F7F9FC;
+  --foreground: #1E293B;
+  --surface: #F2F6FA;
+  --surface-2: #EEF3F8;
+  --card: #FFFFFF;
+  --card-foreground: #1E293B;
+  --popover: #FFFFFF;
+  --popover-foreground: #1E293B;
+
+  --primary: #00B8D9;
+  --primary-hover: #009BB8;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #0F4C81;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #EBF8FA;
+  --accent-foreground: #00B8D9;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --info: #3B82F6;
+
+  --border: #D9E2EC;
+  --border-strong: #CBD5E1;
+  --input: #FFFFFF;
+  --ring: rgba(0, 184, 217, 0.3);
+
+  --sidebar: #F4F7FA;
+  --sidebar-foreground: #1E293B;
+  --sidebar-primary: #00B8D9;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EBF8FA;
+  --sidebar-accent-foreground: #00B8D9;
+  --sidebar-border: #D9E2EC;
+
+  --gradient-primary: linear-gradient(135deg, #00B8D9 0%, #0F4C81 100%);
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Light Enterprise Card Utility (No glow, no dark transparency) */
+@utility glass {
+  background-color: #FFFFFF;
+  border: 1px solid #D9E2EC;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+@utility glass-panel {
+  background-color: #FFFFFF;
+  border: 1px solid #D9E2EC;
+}
+
+@utility mesh-bg {
+  background-color: #F7F9FC;
+}
+
+@utility num {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@layer base {
+  * {
+    border-color: #D9E2EC;
+  }
+
+  html {
+    color-scheme: light;
+    background-color: #F7F9FC;
+  }
+
+  body {
+    background-color: #F7F9FC;
+    color: #1E293B;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: #1E293B;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #CBD5E1;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #94A3B8;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
