@@ -155,10 +155,10 @@ function Dashboard() {
         }
         actions={
           <div className="flex flex-wrap items-center gap-2.5">
-            <DepartmentSelector selected={selectedDept} onSelect={setSelectedDept} />
             <Pill tone="success" className="h-10 px-3.5 flex items-center gap-2 rounded-xl text-xs shrink-0">
               <StatusDot tone="success" /> System Operational · 99.98% Uptime
             </Pill>
+            <DepartmentSelector selected={selectedDept} onSelect={setSelectedDept} />
           </div>
         }
       />

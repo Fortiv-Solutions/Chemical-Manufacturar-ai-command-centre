@@ -328,12 +328,6 @@ export function AppShell({ children }: { children: ReactNode }) {
 
             {/* Right Top Actions */}
             <div className="ml-auto flex items-center gap-3">
-              <button
-                onClick={() => setAiChatOpen(true)}
-                className="hidden items-center gap-2 rounded-xl bg-[#0F4C81] px-4 py-2 text-[13px] font-bold text-[#FFFFFF] transition-all hover:bg-[#0A3A63] sm:flex cursor-pointer"
-              >
-                <Sparkles className="size-4 text-[#FFFFFF]" /> Ask Company AI
-              </button>
               <Pill tone="success" className="hidden xl:inline-flex">
                 <StatusDot tone="success" /> {AUTOMATIONS.filter(a => a.status === "Live").length} automations live
               </Pill>
@@ -346,6 +340,12 @@ export function AppShell({ children }: { children: ReactNode }) {
               >
                 <Bell className="size-4" />
                 <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-[#2F80ED]" />
+              </button>
+              <button
+                onClick={() => setAiChatOpen(true)}
+                className="hidden items-center gap-2 rounded-xl bg-[#0F4C81] px-4 py-2 text-[13px] font-bold text-[#FFFFFF] transition-all hover:bg-[#0A3A63] sm:flex cursor-pointer"
+              >
+                <Sparkles className="size-4 text-[#FFFFFF]" /> Ask Company AI
               </button>
 
               {/* User Profile Card */}
