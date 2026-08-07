@@ -7,33 +7,31 @@ import {
   Boxes,
   BrainCircuit,
   Building2,
-  ChevronLeft,
-  ChevronRight,
-  CheckSquare,
+  ChevronDown,
   FileText,
   Gauge,
-  KeyRound,
   LayoutDashboard,
-  Library,
-  ListChecks,
   Menu,
-  MessagesSquare,
-  Plug,
   Search,
-  Settings,
   ShieldCheck,
   Sparkles,
-  Users,
   Workflow,
   X,
-  Layers,
-  BarChart3,
   Cpu,
+  CheckCircle2,
+  Layers,
+  TrendingUp,
+  FlaskConical,
+  Compass,
+  ArrowRight,
+  Factory,
+  Calendar,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Pill, StatusDot } from "@/components/cc/primitives";
+import { Pill } from "@/components/cc/primitives";
 import { AGENTS, AUTOMATIONS, DEPT_PROFILES } from "@/lib/command-center-data";
 import { AIChatDrawer } from "@/components/cc/AIChatDrawer";
+import { ReadinessModal } from "@/components/cc/ReadinessModal";
 import {
   CommandDialog,
   CommandEmpty,
@@ -43,175 +41,36 @@ import {
   CommandList,
 } from "@/components/ui/command";
 
-const NAV: Array<{ to: string; label: string; icon: typeof Bot; description: string }> = [
-  {
-    to: "/",
-    label: "Executive Command Center",
-    icon: LayoutDashboard,
-    description: "Enterprise overview, executive KPIs, ROI, health & approvals",
-  },
-  {
-    to: "/operations",
-    label: "Business Operations",
-    icon: Building2,
-    description: "39 Chemical departments, tasks, approvals, SOPs & automation",
-  },
-  {
-    to: "/ai-automation",
-    label: "AI & Automation",
-    icon: Bot,
-    description: "Agents, Copilots, Workflow Builder (n8n), Prompts & Models",
-  },
-  {
-    to: "/knowledge-documents",
-    label: "Knowledge & Documents",
-    icon: FileText,
-    description: "Company AI Brain, Enterprise Search, MSDS, SOPs & Contracts",
-  },
-  {
-    to: "/insights",
-    label: "Insights & Reporting",
-    icon: Gauge,
-    description: "Executive analytics, operational reports, forecasting & MIS",
-  },
-  {
-    to: "/platform",
-    label: "Platform Administration",
-    icon: ShieldCheck,
-    description: "Users, RBAC, SSO, Security Audit, Integrations & Governance",
-  },
+export const FACILITIES = [
+  { id: "anand", name: "🧪 Plant: Anand", code: "AND", type: "Specialty Chemicals Site" },
+  { id: "vadodara", name: "🏭 Plant: Vadodara", code: "VAD", type: "Petrochemical Cluster" },
+  { id: "dahej", name: "🏭 Plant: Dahej", code: "DHJ", type: "Polymers Complex" },
+  { id: "hazira", name: "🏭 Plant: Hazira", code: "HZR", type: "Pharma Intermediates" },
+  { id: "enterprise", name: "🏢 Enterprise Overview", code: "ALL", type: "43 Departments" },
 ];
 
-function SidebarContent({
-  onNavigate,
-  collapsed,
-  onToggleCollapse,
-}: {
-  onNavigate?: () => void;
-  collapsed?: boolean;
-  onToggleCollapse?: () => void;
-}) {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-
-  return (
-    <div className="flex h-full flex-col bg-[#F4F7FA] border-r border-[#E2E8F0]">
-      {/* Brand Header */}
-      <div className={cn("flex items-center border-b border-[#E2E8F0] py-4", collapsed ? "justify-center px-2" : "justify-between px-4")}>
-        {!collapsed ? (
-          <>
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="grid size-9 shrink-0 place-items-center rounded-xl bg-[#0F4C81] text-[#FFFFFF]">
-                <Cpu className="size-5" />
-              </div>
-              <div className="leading-tight truncate">
-                <p className="text-sm font-extrabold tracking-tight text-[#1E293B]">ChemCorp AI OS</p>
-                <p className="text-[11px] font-semibold text-[#147A7E]">Industrial Intelligence</p>
-              </div>
-            </div>
-            {onToggleCollapse && (
-              <button
-                onClick={onToggleCollapse}
-                aria-label="Collapse Sidebar"
-                className="hidden lg:flex size-7 items-center justify-center rounded-lg border border-[#E2E8F0] bg-transparent text-[#64748B] hover:bg-[#E2E8F0] hover:text-[#1E293B] transition-colors"
-              >
-                <ChevronLeft className="size-4" />
-              </button>
-            )}
-          </>
-        ) : (
-          <button
-            onClick={onToggleCollapse}
-            aria-label="Expand Sidebar"
-            className="grid size-9 place-items-center rounded-xl bg-[#0F4C81] text-[#FFFFFF] hover:bg-[#0A3A63] transition-colors group relative"
-            title="Expand Sidebar"
-          >
-            <Cpu className="size-5 group-hover:hidden" />
-            <ChevronRight className="size-5 hidden group-hover:block" />
-          </button>
-        )}
-      </div>
-
-      {/* Nav Menu - 6 Exact Business Capability Workspaces */}
-      <nav className="flex-1 space-y-2 overflow-y-auto px-3 py-4">
-        {!collapsed && (
-          <p className="px-3 pb-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#0F4C81]">
-            Workspaces
-          </p>
-        )}
-        <ul className="space-y-1.5">
-          {NAV.map((item) => {
-            const active =
-              item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
-            return (
-              <li key={item.to}>
-                <Link
-                  to={item.to}
-                  onClick={onNavigate}
-                  title={collapsed ? `${item.label} — ${item.description}` : undefined}
-                  className={cn(
-                    "group relative flex items-center transition-all duration-150",
-                    collapsed
-                      ? active
-                        ? "size-10 justify-center rounded-xl bg-[#EBF1F8] text-[#0F4C81] mx-auto"
-                        : "size-10 justify-center rounded-xl text-[#64748B] hover:bg-[#F0F4F8] hover:text-[#0F4C81] mx-auto"
-                      : active
-                        ? "gap-3.5 rounded-xl px-3 py-2.5 text-[13px] font-bold bg-[#EBF1F8] text-[#0F4C81] border-l-[3px] border-l-[#0F4C81]"
-                        : "gap-3.5 rounded-xl px-3 py-2.5 text-[13px] font-bold text-[#475569] hover:bg-[#F0F4F8] hover:text-[#0F4C81]",
-                  )}
-                >
-                  <item.icon
-                    className={cn(
-                      "size-5 shrink-0 transition-colors",
-                      active ? "text-[#0F4C81]" : "text-[#64748B] group-hover:text-[#0F4C81]",
-                    )}
-                  />
-                  {!collapsed && (
-                    <div className="min-w-0 flex-1 leading-tight">
-                      <p className="truncate text-[13px] font-extrabold">{item.label}</p>
-                      <p
-                        className={cn(
-                          "truncate text-[10.5px] font-medium transition-colors mt-0.5",
-                          active ? "text-[#0F4C81]/70" : "text-[#94A3B8] group-hover:text-[#0F4C81]/60",
-                        )}
-                      >
-                        {item.description.split(",")[0]}
-                      </p>
-                    </div>
-                  )}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-
-      {/* System Status Footer */}
-      {!collapsed && (
-        <div className="mx-3 mb-4 rounded-[14px] border border-[#E2E8F0] bg-[#FFFFFF] p-3.5">
-          <div className="flex items-center gap-2 text-xs font-bold text-[#1E293B]">
-            <StatusDot tone="success" /> Industrial Cluster Healthy
-          </div>
-          <p className="mt-1 text-[11px] leading-relaxed text-[#64748B]">
-            {AGENTS.filter((a) => a.status === "active").length} active agents ·{" "}
-            {AUTOMATIONS.filter((a) => a.status === "Live").length} live workflows
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
+const EXECUTIVE_NAV = [
+  { id: "overview", label: "Executive Overview", to: "/", icon: LayoutDashboard },
+  { id: "agents", label: "AI Agents", to: "/ai-automation", icon: Bot },
+  { id: "departments", label: "Departments", to: "/operations", icon: Building2 },
+  { id: "brain", label: "Company Brain", to: "/knowledge-documents", icon: BrainCircuit },
+  { id: "workflows", label: "AI Workflows", to: "/automation", icon: Workflow },
+  { id: "roi", label: "ROI Dashboard", to: "/insights", icon: Gauge },
+  { id: "security", label: "Security", to: "/platform", icon: ShieldCheck },
+  { id: "roadmap", label: "Roadmap", to: "#roadmap", icon: Layers },
+];
 
 function GlobalSearch({ open, setOpen }: { open: boolean; setOpen: (v: boolean) => void }) {
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Search employees, documents, SOPs, invoices, agents, workflows…" />
+      <CommandInput placeholder="Search chemical SOPs, batch records, MSDS, contracts, agents, automations..." />
       <CommandList>
         <CommandEmpty>No enterprise records found matching query.</CommandEmpty>
         <CommandGroup heading="AI Agents">
           {AGENTS.slice(0, 8).map((a) => (
             <CommandItem key={a.id} value={a.name} onSelect={() => setOpen(false)} asChild>
               <Link to="/agents/$agentId" params={{ agentId: a.id }} className="flex items-center gap-2">
-                <Bot className="size-4 text-[#0F4C81]" /> {a.name}
+                <Bot className="size-4 text-[#2563EB]" /> {a.name}
               </Link>
             </CommandItem>
           ))}
@@ -220,16 +79,7 @@ function GlobalSearch({ open, setOpen }: { open: boolean; setOpen: (v: boolean) 
           {DEPT_PROFILES.slice(0, 8).map((d) => (
             <CommandItem key={d.slug} value={d.name} onSelect={() => setOpen(false)} asChild>
               <Link to="/departments/$slug" params={{ slug: d.slug }} className="flex items-center gap-2">
-                <Building2 className="size-4 text-[#147A7E]" /> {d.name}
-              </Link>
-            </CommandItem>
-          ))}
-        </CommandGroup>
-        <CommandGroup heading="Automations & Workflows">
-          {AUTOMATIONS.slice(0, 6).map((a) => (
-            <CommandItem key={a.id} value={a.title} onSelect={() => setOpen(false)} asChild>
-              <Link to="/automation" className="flex items-center gap-2">
-                <Boxes className="size-4 text-[#22C55E]" /> {a.code} · {a.title}
+                <Building2 className="size-4 text-[#059669]" /> {d.name}
               </Link>
             </CommandItem>
           ))}
@@ -240,10 +90,14 @@ function GlobalSearch({ open, setOpen }: { open: boolean; setOpen: (v: boolean) 
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [aiChatOpen, setAiChatOpen] = useState(false);
+  const [readinessModalOpen, setReadinessModalOpen] = useState(false);
+  const [readinessType, setReadinessType] = useState<"assessment" | "demo">("assessment");
+  const [selectedFacility, setSelectedFacility] = useState(FACILITIES[0]!);
+  const [facilityDropdownOpen, setFacilityDropdownOpen] = useState(false);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -253,117 +107,291 @@ export function AppShell({ children }: { children: ReactNode }) {
       }
     };
     const onOpenAiChat = () => setAiChatOpen(true);
+    const onOpenReadiness = (e: Event) => {
+      const customEvent = e as CustomEvent<{ type?: "assessment" | "demo" }>;
+      if (customEvent.detail?.type) {
+        setReadinessType(customEvent.detail.type);
+      } else {
+        setReadinessType("assessment");
+      }
+      setReadinessModalOpen(true);
+    };
 
     window.addEventListener("keydown", onKey);
     window.addEventListener("open-ai-chat", onOpenAiChat);
+    window.addEventListener("open-readiness-modal", onOpenReadiness);
+
     return () => {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("open-ai-chat", onOpenAiChat);
+      window.removeEventListener("open-readiness-modal", onOpenReadiness);
     };
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-[#F5F7FA] text-[#1E293B]">
+    <div className="min-h-screen w-full bg-[#F8FAFC] text-[#0F172A] antialiased">
       <GlobalSearch open={searchOpen} setOpen={setSearchOpen} />
       <AIChatDrawer open={aiChatOpen} onClose={() => setAiChatOpen(false)} />
+      <ReadinessModal
+        open={readinessModalOpen}
+        type={readinessType}
+        onClose={() => setReadinessModalOpen(false)}
+      />
 
-      {/* Desktop sidebar */}
-      <aside
-        className={cn(
-          "fixed inset-y-0 left-0 z-30 hidden border-r border-[#E2E8F0] bg-[#F4F7FA] transition-all duration-300 lg:block",
-          collapsed ? "w-20" : "w-[280px]",
-        )}
-      >
-        <SidebarContent
-          collapsed={collapsed}
-          onToggleCollapse={() => setCollapsed((v) => !v)}
-        />
-      </aside>
+      {/* ══════════════════════════════════════════════════════════════════════
+          FLOATING 3-CARD TOP NAVIGATION HEADER
+          3 independent floating cards on desktop, compact responsive bar on mobile.
+         ══════════════════════════════════════════════════════════════════════ */}
+      <header className="sticky top-2 sm:top-3.5 z-40 mx-auto w-full max-w-[1800px] px-2.5 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between gap-2 sm:gap-3">
 
-      {/* Mobile drawer */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <button
-            aria-label="Close navigation"
-            className="absolute inset-0 bg-[#0F172A]/40 backdrop-blur-xs"
-            onClick={() => setMobileOpen(false)}
-          />
-          <aside className="absolute inset-y-0 left-0 w-[280px] border-r border-[#E2E8F0] bg-[#F4F7FA]">
-            <button
-              aria-label="Close navigation"
-              onClick={() => setMobileOpen(false)}
-              className="absolute right-3 top-4 rounded-md p-1.5 text-[#64748B] hover:bg-[#E2E8F0]"
-            >
-              <X className="size-5" />
-            </button>
-            <SidebarContent onNavigate={() => setMobileOpen(false)} />
-          </aside>
-        </div>
-      )}
+          {/* CARD 1: Left Brand Card — Mobile: hamburger + logo icon only. Desktop: full brand text */}
+          <div className="h-12 sm:h-13 rounded-[20px] sm:rounded-[24px] bg-[#FFFFFF] border border-[#E2E8F0] shadow-md px-2.5 sm:px-4 flex items-center shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+              {/* Logo always first / leftmost */}
+              <img src="/logo.png" alt="Chemical AI OS Logo" className="size-7 sm:size-8 rounded-full object-contain shrink-0" />
 
-      {/* Content wrapper with dynamic padding */}
-      <div className={cn("transition-all duration-300", collapsed ? "lg:pl-20" : "lg:pl-[280px]")}>
-        {/* Premium Top Navigation Bar */}
-        <header className="sticky top-0 z-20 border-b border-[#E2E8F0] bg-[#FFFFFF]">
-          <div className="flex h-16 items-center gap-3 px-4 md:px-6">
-            <button
-              aria-label="Open navigation"
-              onClick={() => setMobileOpen(true)}
-              className="rounded-lg p-2 text-[#64748B] hover:bg-[#F0F4F8] hover:text-[#1E293B] lg:hidden"
-            >
-              <Menu className="size-5" />
-            </button>
-
-            {/* Command Palette Trigger */}
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="group flex h-9.5 min-w-0 flex-1 items-center gap-2.5 rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-4 text-left text-[13px] text-[#64748B] transition-all hover:border-[#0F4C81] hover:bg-[#FFFFFF] md:max-w-md"
-            >
-              <Search className="size-4 text-[#0F4C81] group-hover:scale-105 transition-transform" />
-              <span className="truncate">Search employees, SOPs, invoices, data...</span>
-              <kbd className="ml-auto hidden rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-2 py-0.5 text-[10px] font-bold text-[#64748B] md:inline">
-                ⌘K
-              </kbd>
-            </button>
-
-            {/* Right Top Actions */}
-            <div className="ml-auto flex items-center gap-3">
-              <Pill tone="success" className="hidden xl:inline-flex">
-                <StatusDot tone="success" /> {AUTOMATIONS.filter(a => a.status === "Live").length} automations live
-              </Pill>
-              <Pill tone="info" className="hidden xl:inline-flex">
-                {AGENTS.filter(a => a.status === "active").length} agents active
-              </Pill>
+              {/* Mobile-only hamburger immediately after logo */}
               <button
-                aria-label="Notifications"
-                className="relative rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-2 text-[#64748B] transition-colors hover:bg-[#F0F4F8] hover:text-[#1E293B]"
+                onClick={() => setMobileMenuOpen(true)}
+                className="grid size-7 place-items-center rounded-full text-[#0F172A] md:hidden cursor-pointer hover:bg-[#F1F5F9] shrink-0"
+                title="Open Navigation Menu"
               >
-                <Bell className="size-4" />
-                <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-[#2F80ED]" />
-              </button>
-              <button
-                onClick={() => setAiChatOpen(true)}
-                className="hidden items-center gap-2 rounded-xl bg-[#0F4C81] px-4 py-2 text-[13px] font-bold text-[#FFFFFF] transition-all hover:bg-[#0A3A63] sm:flex cursor-pointer"
-              >
-                <Sparkles className="size-4 text-[#FFFFFF]" /> Ask Company AI
+                <Menu className="size-4" />
               </button>
 
-              {/* User Profile Card */}
-              <div className="flex items-center gap-2.5 rounded-full border border-[#E2E8F0] bg-[#FFFFFF] py-1 pl-1 pr-3.5">
-                <span className="grid size-7.5 place-items-center rounded-full bg-[#0F4C81] text-xs font-bold text-[#FFFFFF]">
-                  RV
-                </span>
-                <div className="hidden leading-tight md:block">
-                  <p className="text-[12px] font-bold text-[#1E293B]">R. Venkatesan</p>
-                  <p className="text-[10px] font-semibold text-[#147A7E]">Chief Digital Officer</p>
-                </div>
+              <div className="min-w-0 leading-tight hidden sm:block">
+                <p className="text-[12px] font-black tracking-tight text-[#0F172A] uppercase truncate">CHEMICAL AI OS</p>
+                <p className="truncate text-[10px] font-bold text-[#64748B]">Fortiv Solutions · Enterprise AI Platform</p>
               </div>
             </div>
           </div>
-        </header>
 
-        <main className="mx-auto w-full max-w-[1600px] space-y-10 px-4 py-8 md:px-6">{children}</main>
-      </div>
+          {/* CARD 2: Center Navigation Pill (Desktop/Tablet) */}
+          <nav className="hidden h-13 rounded-full bg-[#FFFFFF] border border-[#E2E8F0] shadow-md px-2 flex items-center shrink min-w-0 overflow-x-auto md:flex">
+            <ul className="flex items-center gap-1">
+              {EXECUTIVE_NAV.map((item) => {
+                const isHash = item.to.startsWith("#");
+                const active = !isHash && (item.to === "/" ? pathname === "/" : pathname.startsWith(item.to));
+
+                return (
+                  <li key={item.id}>
+                    {isHash ? (
+                      <a
+                        href={item.to}
+                        className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-extrabold text-[#475569] transition-all hover:bg-[#F1F5F9] hover:text-[#0F172A]"
+                      >
+                        <span>{item.label}</span>
+                      </a>
+                    ) : (
+                      <Link
+                        to={item.to}
+                        className={cn(
+                          "flex items-center gap-1.5 transition-all text-xs font-extrabold",
+                          active
+                            ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/25 rounded-full px-3.5 h-9"
+                            : "text-[#475569] hover:bg-[#F1F5F9] hover:text-[#0F172A] rounded-full px-3.5 py-1.5",
+                        )}
+                      >
+                        <span>{item.label}</span>
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* CARD 3: Right Utilities Card */}
+          <div className="h-12 sm:h-13 rounded-full bg-[#FFFFFF] border border-[#E2E8F0] shadow-md px-2 sm:px-3 flex items-center gap-1.5 sm:gap-2 shrink-0">
+
+            {/* Ask AI Primary Button */}
+            <button
+              onClick={() => setAiChatOpen(true)}
+              className="flex h-8 sm:h-9 items-center gap-1 sm:gap-1.5 rounded-full bg-[#2563EB] px-3 sm:px-4 text-[11px] sm:text-xs font-extrabold text-white transition-all hover:bg-[#1D4ED8] shadow-md shadow-[#2563EB]/20 cursor-pointer"
+            >
+              <Sparkles className="size-3 sm:size-3.5 text-white" />
+              <span>Ask AI</span>
+            </button>
+
+            {/* ROI Button — visible on mobile + desktop */}
+            <Link
+              to="/insights"
+              className="flex h-8 sm:h-9 items-center gap-1.5 rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 sm:px-3.5 text-[11px] sm:text-xs font-extrabold text-[#0F172A] hover:bg-[#EFF6FF] hover:border-[#2563EB]/40 transition-all"
+            >
+              <TrendingUp className="size-3 sm:size-3.5 text-[#059669]" />
+              <span className="num font-black">ROI</span>
+            </Link>
+
+            {/* Compact Facility Selector (🧪 Plant: Anand) — desktop only */}
+            <div className="relative hidden lg:block">
+              <button
+                onClick={() => setFacilityDropdownOpen((v) => !v)}
+                className="flex h-9 items-center gap-1.5 rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-3 text-xs font-bold text-[#0F172A] hover:border-[#2563EB]/40 transition-all cursor-pointer max-w-[140px]"
+              >
+                <span className="truncate">{selectedFacility.name}</span>
+                <ChevronDown className="size-3.5 text-[#64748B] shrink-0" />
+              </button>
+
+              {facilityDropdownOpen && (
+                <div className="absolute right-0 top-11 z-50 w-64 rounded-2xl border border-[#E2E8F0] bg-white p-2 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
+                  <p className="px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#64748B]">
+                    Select Chemical Plant Site
+                  </p>
+                  <div className="space-y-1">
+                    {FACILITIES.map((facility) => (
+                      <button
+                        key={facility.id}
+                        onClick={() => {
+                          setSelectedFacility(facility);
+                          setFacilityDropdownOpen(false);
+                        }}
+                        className={cn(
+                          "flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-semibold transition-all",
+                          selectedFacility.id === facility.id
+                            ? "bg-[#EFF6FF] text-[#2563EB] font-extrabold"
+                            : "text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A]",
+                        )}
+                      >
+                        <div>
+                          <p>{facility.name}</p>
+                          <p className="text-[10px] text-[#94A3B8]">{facility.type}</p>
+                        </div>
+                        {selectedFacility.id === facility.id && (
+                          <CheckCircle2 className="size-4 text-[#059669]" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Notification Bell — desktop only */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              title="Search Command Palette (⌘K)"
+              className="hidden sm:grid size-8 place-items-center rounded-full border border-[#E2E8F0] bg-[#F8FAFC] text-[#64748B] hover:bg-[#EFF6FF] hover:text-[#2563EB] transition-colors"
+            >
+              <Bell className="size-4" />
+            </button>
+
+            {/* User Avatar — visible on mobile + desktop */}
+            <div className="flex size-7 sm:size-8 place-items-center justify-center rounded-full bg-[#0F172A] text-[10px] sm:text-[11px] font-black text-white shrink-0">
+              AV
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          MOBILE LEFT-SIDE SLIDING DRAWER SHEET (Matching attached reference UI)
+         ══════════════════════════════════════════════════════════════════════ */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 flex md:hidden">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-[#0F172A]/40 backdrop-blur-xs transition-opacity duration-300"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          {/* Left Drawer Container */}
+          <div className="relative z-50 flex h-full w-[280px] max-w-[85vw] flex-col justify-between bg-white p-5 shadow-2xl animate-in slide-in-from-left duration-300">
+            
+            {/* Header: Logo, Title & Close Button */}
+            <div className="space-y-6">
+              <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-4">
+                <div className="flex items-center gap-3">
+                  <img src="/logo.png" alt="Chemical AI OS Logo" className="size-8 rounded-full object-contain shrink-0" />
+                  <div className="leading-tight">
+                    <p className="text-sm font-extrabold text-[#0F172A]">Chemical AI OS</p>
+                    <p className="text-[11px] font-bold text-[#94A3B8]">Fortiv Solutions</p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="grid size-7 place-items-center rounded-full text-[#64748B] hover:bg-[#F1F5F9] cursor-pointer"
+                >
+                  <X className="size-4" />
+                </button>
+              </div>
+
+              {/* Vertical Navigation Items */}
+              <nav className="space-y-1.5">
+                {EXECUTIVE_NAV.map((item) => {
+                  const isHash = item.to.startsWith("#");
+                  const active = !isHash && (item.to === "/" ? pathname === "/" : pathname.startsWith(item.to));
+
+                  return (
+                    <div key={item.id}>
+                      {isHash ? (
+                        <a
+                          href={item.to}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="flex items-center gap-3.5 rounded-xl px-4 py-3 text-xs font-bold text-[#475569] transition-all hover:bg-[#F8FAFC] hover:text-[#0F172A]"
+                        >
+                          <item.icon className="size-4 text-[#64748B]" />
+                          <span>{item.label}</span>
+                        </a>
+                      ) : (
+                        <Link
+                          to={item.to}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={cn(
+                            "flex items-center gap-3.5 transition-all text-xs font-extrabold rounded-xl px-4 py-3",
+                            active
+                              ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/25"
+                              : "text-[#475569] hover:bg-[#F8FAFC] hover:text-[#0F172A]",
+                          )}
+                        >
+                          <item.icon className={cn("size-4", active ? "text-white" : "text-[#64748B]")} />
+                          <span>{item.label}</span>
+                        </Link>
+                      )}
+                    </div>
+                  );
+                })}
+              </nav>
+            </div>
+
+            {/* Bottom Action Area (Exact match with reference screenshot) */}
+            <div className="space-y-2.5 pt-4 border-t border-[#E2E8F0]">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setAiChatOpen(true);
+                }}
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-[#2563EB] py-3.5 text-xs font-extrabold text-white shadow-lg shadow-[#2563EB]/30 hover:bg-[#1D4ED8] transition-all cursor-pointer"
+              >
+                <Sparkles className="size-4 text-white" />
+                <span>Ask Enterprise AI</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setReadinessType("assessment");
+                  setReadinessModalOpen(true);
+                }}
+                className="flex w-full items-center justify-center gap-2 rounded-full border border-[#E2E8F0] bg-white py-3.5 text-xs font-bold text-[#0F172A] hover:bg-[#F8FAFC] transition-all cursor-pointer"
+              >
+                <Calendar className="size-4 text-[#64748B]" />
+                <span>Book Readiness Assessment</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          MAIN LAYOUT CONTAINER (Full Width max-w-[1800px] mx-auto px-3 sm:px-4 lg:px-6)
+         ══════════════════════════════════════════════════════════════════════ */}
+      <main className="mx-auto w-full max-w-[1800px] space-y-8 sm:space-y-10 px-3 sm:px-4 lg:px-6 py-4 sm:py-6">
+        {children}
+      </main>
     </div>
   );
 }

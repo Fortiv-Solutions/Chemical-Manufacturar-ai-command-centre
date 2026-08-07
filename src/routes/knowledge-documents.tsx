@@ -103,10 +103,10 @@ function KnowledgeDocumentsWorkspacePage() {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`rounded-lg px-3.5 py-2 text-xs font-bold transition-all ${
+            className={`rounded-xl px-3.5 py-2 text-xs font-bold transition-all cursor-pointer ${
               activeTab === tab
-                ? "bg-[#0F4C81] text-[#FFFFFF] shadow-sm"
-                : "text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#1E293B]"
+                ? "bg-[#0B1F4D] text-[#FFFFFF] shadow-sm"
+                : "text-[#64748B] hover:bg-[#F1F5F9] hover:text-[#0B1F4D]"
             }`}
           >
             {tab}

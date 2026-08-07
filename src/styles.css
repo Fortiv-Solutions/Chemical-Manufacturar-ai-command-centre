@@ -1,165 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 /*
- * AI Command Center — Premium Enterprise Industrial Theme.
- * Inspired by Microsoft Fabric, SAP Fiori, Honeywell Forge, Siemens Xcelerator & Palantir Foundry.
+ * Chemical Manufacturing AI Command Center — Enterprise Cobalt & Slate Palette.
+ * Inspired by Stripe, Microsoft Fabric, Linear, Vercel & Salesforce AI.
  */
 
 @theme inline {
-  --font-sans: "Inter", "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Inter", "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+  --font-sans: "DM Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", "DM Sans", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 18px;
-  --radius-2xl: 22px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+  --radius-3xl: 32px;
 
-  /* Color Mappings — Industrial Enterprise Palette */
-  --color-background: #F5F7FA;
-  --color-surface: #F0F3F7;
-  --color-surface-2: #EBF0F5;
-  --color-sidebar: #F4F7FA;
-  --color-topnav: #FFFFFF;
+  /* Color Mappings — Executive Palette Specification */
+  --color-background: #F8FAFC;
+  --color-[#0F172A]: #0F172A;
+  --color-surface: #F1F5F9;
+  --color-surface-2: #E2E8F0;
   --color-card: #FFFFFF;
-  --color-card-foreground: #1E293B;
+  --color-card-foreground: #0F172A;
   --color-popover: #FFFFFF;
-  --color-popover-foreground: #1E293B;
-  --color-hover: #F0F4F8;
+  --color-popover-foreground: #0F172A;
+  --color-hover: #F8FAFC;
   --color-border: #E2E8F0;
   --color-border-strong: #CBD5E1;
-  --color-divider: #E8EDF3;
 
-  --color-foreground: #1E293B;
-  --color-secondary-foreground: #64748B;
-  --color-muted-foreground: #94A3B8;
+  --color-foreground: #0F172A;
+  --color-secondary-foreground: #475569;
+  --color-muted-foreground: #64748B;
   --color-disabled-foreground: #CBD5E1;
 
-  --color-primary: #0F4C81; /* Industrial Blue */
-  --color-primary-hover: #0A3A63;
+  --color-primary: #2563EB; /* Electric Executive Cobalt Blue */
+  --color-primary-hover: #1D4ED8;
   --color-primary-foreground: #FFFFFF;
 
-  --color-secondary: #147A7E; /* Polymer Teal */
+  --color-secondary: #0F172A; /* Slate Navy */
   --color-secondary-foreground: #FFFFFF;
 
-  --color-muted: #F1F5F9;
-  --color-accent: #EBF1F8;
-  --color-accent-foreground: #0F4C81;
+  --color-muted: #F8FAFC;
+  --color-accent: #EFF6FF; /* Ice Blue Wash */
+  --color-accent-foreground: #2563EB;
 
-  --color-success: #22C55E;
+  --color-success: #059669; /* Emerald Green */
   --color-success-foreground: #FFFFFF;
-  --color-warning: #F59E0B;
+  --color-warning: #D97706; /* Amber */
   --color-warning-foreground: #FFFFFF;
-  --color-destructive: #EF4444;
+  --color-destructive: #DC2626; /* Crimson Red */
   --color-destructive-foreground: #FFFFFF;
-  --color-info: #2F80ED;
 
-  --color-sidebar-foreground: #1E293B;
-  --color-sidebar-primary: #0F4C81;
-  --color-sidebar-primary-foreground: #FFFFFF;
-  --color-sidebar-accent: #EBF1F8;
-  --color-sidebar-accent-foreground: #0F4C81;
-  --color-sidebar-border: #E2E8F0;
+  --color-chart-1: #2563EB; /* Cobalt Blue */
+  --color-chart-2: #059669; /* Emerald Green */
+  --color-chart-3: #0F172A; /* Deep Slate */
+  --color-chart-4: #D97706; /* Amber */
+  --color-chart-5: #6366F1; /* Indigo */
 
-  --color-chart-1: #0F4C81; /* Industrial Blue */
-  --color-chart-2: #147A7E; /* Polymer Teal */
-  --color-chart-3: #22C55E; /* Emerald */
-  --color-chart-4: #F59E0B; /* Amber */
-  --color-chart-5: #2F80ED; /* Accent Blue */
-
-  --shadow-elevated: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 0 0 1px #E2E8F0;
-  --shadow-card-hover: 0 10px 25px -5px rgba(15, 76, 129, 0.08), 0 0 0 1px #0F4C81;
-
-  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
-  --animate-rise: rise 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --shadow-floating: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --shadow-card-elevated: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 0 0 1px #E2E8F0;
+  --shadow-card-hover: 0 14px 35px -6px rgba(37, 99, 235, 0.12), 0 0 0 1px #2563EB;
 }
 
 :root {
-  --radius: 16px;
+  --radius: 28px;
 
-  --background: #F5F7FA;
-  --foreground: #1E293B;
-  --surface: #F0F3F7;
-  --surface-2: #EBF0F5;
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --surface: #F1F5F9;
   --card: #FFFFFF;
-  --card-foreground: #1E293B;
-  --popover: #FFFFFF;
-  --popover-foreground: #1E293B;
+  --card-foreground: #0F172A;
 
-  --primary: #0F4C81;
-  --primary-hover: #0A3A63;
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
   --primary-foreground: #FFFFFF;
 
-  --secondary: #147A7E;
+  --secondary: #0F172A;
   --secondary-foreground: #FFFFFF;
-  --muted: #F1F5F9;
+  --muted: #F8FAFC;
   --muted-foreground: #64748B;
-  --accent: #EBF1F8;
-  --accent-foreground: #0F4C81;
+  --accent: #EFF6FF;
+  --accent-foreground: #2563EB;
 
-  --destructive: #EF4444;
-  --destructive-foreground: #FFFFFF;
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --info: #2F80ED;
+  --destructive: #DC2626;
+  --success: #059669;
+  --warning: #D97706;
 
   --border: #E2E8F0;
   --border-strong: #CBD5E1;
   --input: #FFFFFF;
-  --ring: rgba(15, 76, 129, 0.25);
+  --ring: rgba(37, 99, 235, 0.2);
 
-  --sidebar: #F4F7FA;
-  --sidebar-foreground: #1E293B;
-  --sidebar-primary: #0F4C81;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #EBF1F8;
-  --sidebar-accent-foreground: #0F4C81;
-  --sidebar-border: #E2E8F0;
-
-  --gradient-primary: linear-gradient(135deg, #0F4C81 0%, #147A7E 100%);
+  --gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #1E40AF 100%);
+  --gradient-card: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
 }
 
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Premium Enterprise Card Utility */
 @utility glass {
   background-color: #FFFFFF;
   border: 1px solid #E2E8F0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.03);
+  border-radius: 28px;
 }
 
-@utility glass-panel {
-  background-color: #FFFFFF;
+@utility glass-floating {
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
   border: 1px solid #E2E8F0;
-}
-
-@utility mesh-bg {
-  background-color: #F5F7FA;
+  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
 }
 
 @utility num {
   font-family: var(--font-sans);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 @layer base {
@@ -169,12 +128,12 @@
 
   html {
     color-scheme: light;
-    background-color: #F5F7FA;
+    background-color: #F8FAFC;
   }
 
   body {
-    background-color: #F5F7FA;
-    color: #1E293B;
+    background-color: #F8FAFC;
+    color: #0F172A;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     letter-spacing: -0.01em;
@@ -182,8 +141,8 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
-    color: #1E293B;
+    letter-spacing: -0.025em;
+    color: #0F172A;
   }
 
   ::-webkit-scrollbar {
