@@ -47,12 +47,12 @@ export function PageHeader({
         {eyebrow && (
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-[#2563EB]" />
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#2563EB]">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2563EB]">
               {eyebrow}
             </p>
           </div>
         )}
-        <h1 className="mt-1.5 text-2xl font-extrabold tracking-tight text-[#0F172A] md:text-3xl">{title}</h1>
+        <h1 className="mt-1.5 text-2xl font-bold tracking-tight text-[#0F172A] md:text-3xl">{title}</h1>
         {description && (
           <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-[#64748B] font-medium">
             {description}

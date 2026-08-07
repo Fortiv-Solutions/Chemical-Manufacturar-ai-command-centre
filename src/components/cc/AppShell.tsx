@@ -161,8 +161,8 @@ export function AppShell({ children }: { children: ReactNode }) {
               </button>
 
               <div className="min-w-0 leading-tight hidden sm:block">
-                <p className="text-[12px] font-black tracking-tight text-[#0F172A] uppercase truncate">CHEMICAL AI OS</p>
-                <p className="truncate text-[10px] font-bold text-[#64748B]">Fortiv Solutions · Enterprise AI Platform</p>
+                <p className="text-[12px] font-bold tracking-tight text-[#0F172A] uppercase truncate">CHEMICAL AI OS</p>
+                <p className="truncate text-[10px] font-medium text-[#64748B]">Fortiv Solutions · Enterprise AI Platform</p>
               </div>
             </div>
           </div>
@@ -179,7 +179,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                     {isHash ? (
                       <a
                         href={item.to}
-                        className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-extrabold text-[#475569] transition-all hover:bg-[#F1F5F9] hover:text-[#0F172A]"
+                        className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-[#475569] transition-all hover:bg-[#F1F5F9] hover:text-[#0F172A]"
                       >
                         <span>{item.label}</span>
                       </a>
@@ -187,10 +187,10 @@ export function AppShell({ children }: { children: ReactNode }) {
                       <Link
                         to={item.to}
                         className={cn(
-                          "flex items-center gap-1.5 transition-all text-xs font-extrabold",
+                          "flex items-center gap-1.5 transition-all text-xs font-bold",
                           active
                             ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/25 rounded-full px-3.5 h-9"
-                            : "text-[#475569] hover:bg-[#F1F5F9] hover:text-[#0F172A] rounded-full px-3.5 py-1.5",
+                            : "text-[#475569] hover:bg-[#F1F5F9] hover:text-[#0F172A] rounded-full px-3.5 py-1.5 font-semibold",
                         )}
                       >
                         <span>{item.label}</span>

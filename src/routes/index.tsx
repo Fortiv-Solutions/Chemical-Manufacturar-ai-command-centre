@@ -578,21 +578,21 @@ export function Dashboard() {
           <div className="space-y-4 sm:space-y-6 lg:col-span-8">
             {/* Badges */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-[#60A5FA] backdrop-blur-md border border-white/10">
+              <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#60A5FA] backdrop-blur-md border border-white/10">
                 <Sparkles className="size-3.5 sm:size-4 text-[#059669]" /> Fortiv Solutions · Chemical Manufacturing AI Command Center
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#059669]/20 px-3 sm:px-3.5 py-1 text-[10px] sm:text-xs font-extrabold text-[#34D399] backdrop-blur-md border border-[#059669]/30">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#059669]/20 px-3 sm:px-3.5 py-1 text-[10px] sm:text-xs font-semibold text-[#34D399] backdrop-blur-md border border-[#059669]/30">
                 <ShieldCheck className="size-3.5 text-[#34D399]" /> Software-Only · Zero Hardware Required
               </span>
             </div>
 
             {/* Responsive Headline */}
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight text-white lg:leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-white lg:leading-tight">
               Digitally Transform Your Chemical Enterprise with Autonomous AI
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-xs sm:text-sm font-medium leading-relaxed text-white/80 md:text-base max-w-3xl">
+            <p className="text-xs sm:text-sm font-normal leading-relaxed text-white/80 md:text-base max-w-3xl">
               Deploy <strong>231 proven AI automation opportunities</strong> across <strong>43 chemical business functions</strong> in 90 days. Software-only intelligence grounded on your plant data with zero physical hardware, IoT, sensor, or PLC/SCADA changes required.
             </p>
 
@@ -600,7 +600,7 @@ export function Dashboard() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2">
               <button
                 onClick={() => openReadiness("assessment")}
-                className="flex items-center justify-center gap-2 rounded-full bg-[#2563EB] px-6 sm:px-7 py-3.5 sm:py-4 text-xs font-extrabold text-white shadow-lg shadow-[#2563EB]/30 hover:bg-[#1D4ED8] transition-all cursor-pointer w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 rounded-full bg-[#2563EB] px-6 sm:px-7 py-3.5 sm:py-4 text-xs font-semibold text-white shadow-lg shadow-[#2563EB]/30 hover:bg-[#1D4ED8] transition-all cursor-pointer w-full sm:w-auto"
               >
                 <span>Book AI Readiness Assessment</span>
                 <ArrowRight className="size-4 text-white" />
@@ -608,14 +608,14 @@ export function Dashboard() {
 
               <button
                 onClick={() => openReadiness("demo")}
-                className="flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 sm:px-7 py-3.5 sm:py-4 text-xs font-extrabold text-white backdrop-blur-md hover:bg-white/20 transition-all cursor-pointer w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 sm:px-7 py-3.5 sm:py-4 text-xs font-semibold text-white backdrop-blur-md hover:bg-white/20 transition-all cursor-pointer w-full sm:w-auto"
               >
                 <span>Schedule Executive Demo</span>
               </button>
 
               <button
                 onClick={openChat}
-                className="flex items-center justify-center gap-2 rounded-full bg-white px-5 sm:px-6 py-3.5 sm:py-4 text-xs font-extrabold text-[#0F172A] shadow-md hover:bg-[#F8FAFC] transition-all cursor-pointer w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 rounded-full bg-white px-5 sm:px-6 py-3.5 sm:py-4 text-xs font-semibold text-[#0F172A] shadow-md hover:bg-[#F8FAFC] transition-all cursor-pointer w-full sm:w-auto"
               >
                 <Sparkles className="size-4 text-[#2563EB]" />
                 <span>Ask AI Assistant</span>
@@ -627,43 +627,43 @@ export function Dashboard() {
           <div className="lg:col-span-4">
             <div className="rounded-[24px] sm:rounded-[28px] border border-white/20 bg-white/10 p-5 sm:p-6 backdrop-blur-xl space-y-3.5 shadow-xl">
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <span className="text-xs font-extrabold text-white flex items-center gap-2">
+                <span className="text-xs font-semibold text-white flex items-center gap-2">
                   <Activity className="size-4 text-[#34D399]" /> Chemical Platform Status
                 </span>
-                <span className="rounded-full bg-[#059669] px-2.5 py-0.5 text-[10px] sm:text-[10.5px] font-black text-white">
+                <span className="rounded-full bg-[#059669] px-2.5 py-0.5 text-[10px] sm:text-[10.5px] font-bold text-white">
                   Operational 99.98%
                 </span>
               </div>
 
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                 <div className="rounded-2xl bg-white/10 p-3 sm:p-3.5 border border-white/10">
-                  <p className="text-[10px] font-bold text-white/70">Annual Value Creation</p>
-                  <p className="text-lg sm:text-xl font-black text-white mt-1 num">₹48.5 Cr</p>
-                  <p className="text-[10px] text-[#34D399] font-bold mt-0.5">▲ EBITDA Gain</p>
+                  <p className="text-[10px] font-semibold text-white/70">Annual Value Creation</p>
+                  <p className="text-lg sm:text-xl font-bold text-white mt-1 num">₹48.5 Cr</p>
+                  <p className="text-[10px] text-[#34D399] font-semibold mt-0.5">▲ EBITDA Gain</p>
                 </div>
 
                 <div className="rounded-2xl bg-white/10 p-3 sm:p-3.5 border border-white/10">
-                  <p className="text-[10px] font-bold text-white/70">Audit Readiness</p>
-                  <p className="text-lg sm:text-xl font-black text-white mt-1 num">100%</p>
-                  <p className="text-[10px] text-[#34D399] font-bold mt-0.5">REACH & SDS Ready</p>
+                  <p className="text-[10px] font-semibold text-white/70">Audit Readiness</p>
+                  <p className="text-lg sm:text-xl font-bold text-white mt-1 num">100%</p>
+                  <p className="text-[10px] text-[#34D399] font-semibold mt-0.5">REACH & SDS Ready</p>
                 </div>
 
                 <div className="rounded-2xl bg-white/10 p-3 sm:p-3.5 border border-white/10">
-                  <p className="text-[10px] font-bold text-white/70">Active AI Agents</p>
-                  <p className="text-lg sm:text-xl font-black text-white mt-1 num">58 Agents</p>
-                  <p className="text-[10px] text-[#60A5FA] font-bold mt-0.5">43 Departments</p>
+                  <p className="text-[10px] font-semibold text-white/70">Active AI Agents</p>
+                  <p className="text-lg sm:text-xl font-bold text-white mt-1 num">58 Agents</p>
+                  <p className="text-[10px] text-[#60A5FA] font-semibold mt-0.5">43 Departments</p>
                 </div>
 
                 <div className="rounded-2xl bg-white/10 p-3 sm:p-3.5 border border-white/10">
-                  <p className="text-[10px] font-bold text-white/70">Procurement SLA</p>
-                  <p className="text-lg sm:text-xl font-black text-white mt-1 num">-64%</p>
-                  <p className="text-[10px] text-[#34D399] font-bold mt-0.5">Cycle Reduction</p>
+                  <p className="text-[10px] font-semibold text-white/70">Procurement SLA</p>
+                  <p className="text-lg sm:text-xl font-bold text-white mt-1 num">-64%</p>
+                  <p className="text-[10px] text-[#34D399] font-semibold mt-0.5">Cycle Reduction</p>
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-white/10 p-3 border border-white/10 flex items-center justify-between text-xs font-bold">
+              <div className="rounded-2xl bg-white/10 p-3 border border-white/10 flex items-center justify-between text-xs font-semibold">
                 <span className="text-white/80">Architecture:</span>
-                <span className="text-[#34D399] font-extrabold flex items-center gap-1">
+                <span className="text-[#34D399] font-bold flex items-center gap-1">
                   <ShieldCheck className="size-4 text-[#34D399]" /> 100% Software Layer
                 </span>
               </div>
